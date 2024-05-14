@@ -1,0 +1,15 @@
+﻿<AML>
+ <Item type="Form" id="057AE2B4F60C43AF9ADC1212B0637FA7" action="add">
+  <height>234</height>
+  <stylesheet><![CDATA[../styles/default.css]]></stylesheet>
+  <width>699</width>
+  <name>tp_bloc_reqif_property</name>
+  <Relationships>
+   <Item type="Body" id="257C6B0ED6C4469991631A484D9500E4" action="add">
+    <bg_color>#FFFFFF</bg_color>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="tp_bloc_reqif_property" type="Form">057AE2B4F60C43AF9ADC1212B0637FA7</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

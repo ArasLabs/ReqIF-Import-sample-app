@@ -1,0 +1,94 @@
+﻿<AML>
+ <Item type="RelationshipType" id="DF14A4DC6AFA4876BF77DC26B1A3D286" action="add" dependencyLevel="0">
+  <auto_search>1</auto_search>
+  <behavior>float</behavior>
+  <copy_permissions>0</copy_permissions>
+  <create_related>0</create_related>
+  <hide_in_all>0</hide_in_all>
+  <inc_rel_key_name>1</inc_rel_key_name>
+  <inc_related_key_name>1</inc_related_key_name>
+  <is_list_type>0</is_list_type>
+  <label xml:lang="en">ReqIF Properties</label>
+  <new_show_related>0</new_show_related>
+  <related_notnull>0</related_notnull>
+  <related_option>2</related_option>
+  <relationship_id keyed_name="re_Req_Doc_ReqIF_Property" type="ItemType" name="re_Req_Doc_ReqIF_Property">
+   <Item type="ItemType" id="B1033284A9A14EF1BACA4F943DD106A6" action="add">
+    <allow_private_permission>1</allow_private_permission>
+    <auto_search>0</auto_search>
+    <enforce_discovery>0</enforce_discovery>
+    <hide_where_used>0</hide_where_used>
+    <implementation_type>table</implementation_type>
+    <instance_data>RE_REQ_DOC_REQIF_PROPERTY</instance_data>
+    <is_dependent>0</is_dependent>
+    <is_relationship>1</is_relationship>
+    <is_versionable>0</is_versionable>
+    <revisions keyed_name="Default" type="Revision">7FE395DD8B9F4E1090756A34B733D75E</revisions>
+    <show_parameters_tab>1</show_parameters_tab>
+    <structure_view>tabs off</structure_view>
+    <unlock_on_logout>0</unlock_on_logout>
+    <use_src_access>1</use_src_access>
+    <name>re_Req_Doc_ReqIF_Property</name>
+    <Relationships>
+     <Item type="Property" id="3741B22CBD754A459237C8AC7F7D0688" action="add">
+      <column_alignment>left</column_alignment>
+      <column_width>200</column_width>
+      <data_source keyed_name="reqif_ReqMappingProperties">B21106764D4B4C6E9CF6B99C889DFD02</data_source>
+      <data_type>list</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>0</is_hidden>
+      <is_hidden2>0</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">Aras Property</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>20</sort_order>
+      <source_id keyed_name="re_Req_Doc_ReqIF_Property" type="ItemType" name="re_Req_Doc_ReqIF_Property">B1033284A9A14EF1BACA4F943DD106A6</source_id>
+      <stored_length>256</stored_length>
+      <track_history>0</track_history>
+      <name>_aras_property</name>
+     </Item>
+     <Item type="Property" id="9297D8D0D094417C9B0064D09E94636F" action="add">
+      <column_alignment>left</column_alignment>
+      <column_width>200</column_width>
+      <data_type>string</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>0</is_hidden>
+      <is_hidden2>0</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">ReqIF Attribute</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>10</sort_order>
+      <source_id keyed_name="re_Req_Doc_ReqIF_Property" type="ItemType" name="re_Req_Doc_ReqIF_Property">B1033284A9A14EF1BACA4F943DD106A6</source_id>
+      <stored_length>128</stored_length>
+      <track_history>0</track_history>
+      <name>_reqif_attribute</name>
+     </Item>
+     <Item type="View" id="4024BDCD5C5547AE8D82A0E7BBAFE746" action="add">
+      <client>js</client>
+      <related_id keyed_name="re_Req_Doc_ReqIF_Property" type="Form">764411C605EF4D08AB17BFC993872027</related_id>
+      <role keyed_name="World" type="Identity">
+       <Item type="Identity" action="get" select="id">
+        <name>World</name>
+       </Item>
+      </role>
+      <show_ssvc>0</show_ssvc>
+      <sort_order>128</sort_order>
+      <source_id keyed_name="re_Req_Doc_ReqIF_Property" type="ItemType" name="re_Req_Doc_ReqIF_Property">B1033284A9A14EF1BACA4F943DD106A6</source_id>
+      <type>default</type>
+     </Item>
+    </Relationships>
+   </Item>
+  </relationship_id>
+  <sort_order>896</sort_order>
+  <source_id keyed_name="re_Requirement_Document" type="ItemType" name="re_Requirement_Document">231ABCEFD2634AB3AD3B9A4748BFC4FA</source_id>
+  <name>re_Req_Doc_ReqIF_Property</name>
+ </Item>
+</AML>

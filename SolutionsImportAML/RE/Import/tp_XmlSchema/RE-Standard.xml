@@ -1,0 +1,634 @@
+﻿<AML>
+ <Item type="tp_XmlSchema" id="8DF7037346A64816B8BBD8700AFCFE15" action="add">
+  <application>re_Requirement</application>
+  <content>&lt;xs:schema xmlns="http://www.aras.com/REStandard" targetNamespace="http://www.aras.com/REStandard" xmlns:aras="http://aras.com/ArasTechDoc" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"&gt;
+	&lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"/&gt;
+	&lt;xs:import namespace="http://aras.com/ArasTechDoc"/&gt;
+
+	&lt;xs:element name="Requirement-Chapter"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement-Title"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement-Number"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement-Info"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:choice minOccurs="3" maxOccurs="3"&gt;
+					&lt;xs:element ref="Requirement-Chapter" minOccurs="1" maxOccurs="1"/&gt;
+					&lt;xs:element ref="Requirement-Title" minOccurs="1" maxOccurs="1"/&gt;
+					&lt;xs:element ref="Requirement-Number" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+					&lt;xs:element ref="XHTML" /&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="CommonElement"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Usecase"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Test"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Verification"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Validation"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="RequirementText"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Structure"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Label"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Graphic"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:imageType"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Title"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Subtitle"&gt;
+		&lt;xs:complexType mixed="true"/&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Text"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="List"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:list"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="List-Item" minOccurs="1" maxOccurs="unbounded"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="List-Item"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:listitemType"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="Text" /&gt;
+						&lt;xs:element ref="Graphic"/&gt;
+						&lt;xs:element ref="List"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Table"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:table"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Row" substitutionGroup="aras:tablerow"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:tr"&gt;&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Entry" substitutionGroup="aras:tablecell"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:td"&gt;
+					&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="Text" minOccurs="0" maxOccurs="unbounded"/&gt;
+						&lt;xs:element ref="List"/&gt;
+						&lt;xs:element ref="Graphic"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="ItemInfo"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:itemType"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="ItemProperty"/&gt;
+					&lt;/xs:choice&gt;
+					&lt;xs:attribute name="typeId" type="xs:string" fixed="F41F80A02D51499C9FDFE74517CF6260"/&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="ItemProperty"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:itemProperty"/&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+    
+    &lt;xs:element name="XHTML"&gt;&lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+
+</content>
+  <name>RE-Standard</name>
+  <Relationships>
+   <Item type="tp_Stylesheet" id="0E138433B41A41068835DAD7B1D4AE34" action="add">
+    <sort_order>128</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <style_content>
+#dijitEditorBody {
+	padding: 0px;
+}
+
+hlr {
+	color: #e78e46;
+}
+
+hlr[active] {
+	background-color: #e78e46 !important;
+	color: white;
+}
+
+.ArasBlockXmlSchemaElement &gt; *:last-child {
+	margin-bottom: 20px;
+}
+
+.ArasTextXmlSchemaElement,
+.ArasImageXmlSchemaElement,
+.ArasListXmlSchemaElement,
+.Subtitle {
+	padding: 0 32px;
+}
+
+.ArasTextXmlSchemaElement {
+	font-family: Arial;
+	color: #444444;
+}
+
+.ArasTextXmlSchemaElement + *,
+.Subtitle + * {
+	margin-top: 16px;
+}
+
+.Requirement-Title {
+	padding-left: 0px;
+	padding-right: 20px;
+}
+
+.Requirement-Chapter {
+	padding-left: 20px;
+	padding-right: 0px;
+}
+
+.Requirement-Title, .Requirement-Chapter {
+	padding-top: 20px;
+	padding-bottom: 0px;
+	display: inline-block;
+}
+
+.ArasTextXmlSchemaElement:empty:not(:focus)::before, .XmlSchemaText:empty:not(:focus)::before {
+	content: ''
+}
+
+.Requirement-Title, .Requirement-Chapter {
+	font-weight: bold;
+	font-size: 22px;
+}
+
+.Requirement-Title + *, .Requirement-Chapter + * {
+	margin-top: 4px;
+}
+
+.Requirement-Number {
+	padding: 0 20px;
+	color: #808080;
+	font-size: 12px;
+}
+
+.ArasImageXmlSchemaElement {
+	margin: 0;
+}
+
+.Requirement-Info + *,
+.ArasImageXmlSchemaElement + *,
+.ArasTableXmlSchemaElement + *,
+.ArasListXmlSchemaElement + * {
+	margin-top: 20px;
+}
+
+.Text {
+	font-size: 12px;
+}
+
+.Label {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.Title {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.Subtitle {
+	font-size: 16px;
+}
+
+.ArasTableXmlSchemaElement {
+	border: none;
+	margin-left: 20px;
+	width: calc(100% - 40px);
+	border-collapse: collapse;
+}
+
+.ArasCellXmlSchemaElement &gt; *,
+.ArasListItemXmlSchemaElement &gt; * {
+	padding: 0;
+}
+
+.ArasCellXmlSchemaElement {
+	border: 1px solid #CCC;
+	padding: 8px 6px;
+	background-clip: padding-box;
+}
+
+.ArasListItemXmlSchemaElement.bulletListItem:before {
+	left: 0px;
+}
+
+.ArasListItemXmlSchemaElement,
+.ArasListItemXmlSchemaElement &gt; .ArasListXmlSchemaElement {
+	padding-left: 16px;
+}
+
+.ArasListItemXmlSchemaElement + .ArasListItemXmlSchemaElement,
+.ArasListItemXmlSchemaElement &gt; .ArasListXmlSchemaElement {
+	margin-top: 6px;
+}</style_content>
+    <name>RE PDF Style Settings</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="1290BF7E55CC44D18B3E7A4A1A8391A9" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Structure</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Structure</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="3EA1C59C6C7B47C5B6C946316C13416C" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Requirement</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>256</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Requirement</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="42BAE9FA7D1746299ABB28E82D780D1C" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Use case</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>384</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Usecase</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="A7533B7643A44CCDAB4F71BD9B840C59" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Test</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>512</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Test</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="7937DD8D50FC47F69E7C1F3E6DA7D73A" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Verification</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>640</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Verification</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="A1B01D19E3C44863AAE0AB80BECD74B0" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Validation</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>768</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Validation</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="464C623B23DD43229FE84D6B0C697CC9" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <default_classification>Text</default_classification>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>896</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>RequirementText</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="120F56D1A55C4F9A895E1E20F42DEE2F" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_ReqTitleElementRenderer" type="Method">CDF4B62D521540779B5A85A5D592F885</renderer>
+    <sort_order>1024</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Requirement-Title</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="2B8DA6B1EAA0414FAC1984819CA9A1F1" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_HideElement" type="Method">3F18C12DB6F44D1C9149F2E95299D15F</renderer>
+    <sort_order>1152</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Requirement-Number</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="A7B3E14CEE104C29AC6D7D9CF6D4872B" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_HideElement" type="Method">3F18C12DB6F44D1C9149F2E95299D15F</renderer>
+    <sort_order>1280</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Requirement-Chapter</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="A9689E56F2AC421FA26E6BE9E8511E86" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_ReqTitleElementRenderer" type="Method">CDF4B62D521540779B5A85A5D592F885</renderer>
+    <sort_order>1408</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>Requirement-Info</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="EF61DAC6410F4F018E7AF5C9A1591ABE" action="add">
+    <content_generator keyed_name="re_DefaultContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>re_DefaultContentGenerator</name>
+     </Item>
+    </content_generator>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_RootElementRenderer" type="Method">EDA1A309D8D24CA382A35064D831635C</renderer>
+    <sort_order>1920</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>CommonElement</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="28AED96B348745588A01F4C87E93BD68" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_RenderXHTML" type="Method">C154FC02CD474416981F125D40E40BA6</renderer>
+    <sort_order>2048</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <name>XHTML</name>
+   </Item>
+   <Item type="tp_XmlSchemaOutputSetting" id="DBD1D44209874BAC84A6E1F3D9C97E71" action="add">
+    <classification>PDF</classification>
+    <indentation>0</indentation>
+    <name>PDF</name>
+    <omit_xml_declaration>0</omit_xml_declaration>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <stylesheet_id keyed_name="RE PDF Style Settings" type="tp_Stylesheet">0E138433B41A41068835DAD7B1D4AE34</stylesheet_id>
+   </Item>
+   <Item type="tp_XmlSchemaOutputSetting" id="A83D2E0B301B40DCA0806BE327CE9797" action="add">
+    <classification>Editor</classification>
+    <indentation>0</indentation>
+    <name>Editor</name>
+    <omit_xml_declaration>0</omit_xml_declaration>
+    <sort_order>256</sort_order>
+    <source_id keyed_name="RE-Standard" type="tp_XmlSchema">8DF7037346A64816B8BBD8700AFCFE15</source_id>
+    <stylesheet_id keyed_name="RE PDF Style Settings" type="tp_Stylesheet">0E138433B41A41068835DAD7B1D4AE34</stylesheet_id>
+   </Item>
+  </Relationships>
+  <target_namespace>http://www.aras.com/REStandard</target_namespace>
+ </Item>
+</AML>

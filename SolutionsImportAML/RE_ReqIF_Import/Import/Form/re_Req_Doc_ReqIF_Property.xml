@@ -1,0 +1,65 @@
+﻿<AML>
+ <Item type="Form" id="764411C605EF4D08AB17BFC993872027" action="add">
+  <height>234</height>
+  <stylesheet><![CDATA[../styles/default.css]]></stylesheet>
+  <width>699</width>
+  <name>re_Req_Doc_ReqIF_Property</name>
+  <Relationships>
+   <Item type="Body" id="045F974229914480A97B0AA8CAF04624" action="add">
+    <bg_color>#FFFFFF</bg_color>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="re_Req_Doc_ReqIF_Property" type="Form">764411C605EF4D08AB17BFC993872027</source_id>
+    <Relationships>
+     <Item type="Field" id="C522B59628EC42FAA0150562AC67197C" action="add">
+      <border_width>0</border_width>
+      <display_length_unit>px</display_length_unit>
+      <field_type>dropdown</field_type>
+      <font_color>#333333</font_color>
+      <font_family>arial, helvetica, sans-serif</font_family>
+      <font_size>8pt</font_size>
+      <font_weight>bold</font_weight>
+      <is_disabled>0</is_disabled>
+      <is_visible>1</is_visible>
+      <label xml:lang="en">Aras Property</label>
+      <label_position>top</label_position>
+      <list_no_blank>0</list_no_blank>
+      <propertytype_id keyed_name="_aras_property" type="Property">3741B22CBD754A459237C8AC7F7D0688</propertytype_id>
+      <show_help>1</show_help>
+      <sort_order>256</sort_order>
+      <source_id keyed_name="045F974229914480A97B0AA8CAF04624" type="Body">045F974229914480A97B0AA8CAF04624</source_id>
+      <tab_index>20</tab_index>
+      <tab_stop>1</tab_stop>
+      <x>10</x>
+      <y>85</y>
+      <name>_aras_property</name>
+     </Item>
+     <Item type="Field" id="654D57EE4059479F842E7D7AEDF47C34" action="add">
+      <border_width>0</border_width>
+      <display_length_unit>px</display_length_unit>
+      <field_type>textarea</field_type>
+      <font_color>#333333</font_color>
+      <font_family>arial, helvetica, sans-serif</font_family>
+      <font_size>8pt</font_size>
+      <font_weight>bold</font_weight>
+      <is_disabled>0</is_disabled>
+      <is_visible>1</is_visible>
+      <label xml:lang="en">ReqIF Attribute</label>
+      <label_position>top</label_position>
+      <list_no_blank>0</list_no_blank>
+      <propertytype_id keyed_name="_reqif_attribute" type="Property">9297D8D0D094417C9B0064D09E94636F</propertytype_id>
+      <show_help>1</show_help>
+      <sort_order>128</sort_order>
+      <source_id keyed_name="045F974229914480A97B0AA8CAF04624" type="Body">045F974229914480A97B0AA8CAF04624</source_id>
+      <tab_index>10</tab_index>
+      <tab_stop>1</tab_stop>
+      <textarea_cols>350</textarea_cols>
+      <textarea_rows>50</textarea_rows>
+      <x>10</x>
+      <y>10</y>
+      <name>_reqif_attribute</name>
+     </Item>
+    </Relationships>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

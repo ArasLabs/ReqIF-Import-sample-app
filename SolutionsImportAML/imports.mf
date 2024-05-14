@@ -1,0 +1,17 @@
+<imports>
+	<!-- REQUIREMENT ENGINEERING -->
+	<package name="aras.labs.RE_ReqIF_Import" path="RE_ReqIF_Import\Import"/>
+	<package name="com.aras.innovator.solution.RE" path="RE\Import">
+		<dependson name="aras.labs.RE_ReqIF_Import"/>
+	</package>
+	<!-- TECHNICAL DOCUMENTATION -->
+	<package name="aras.labs.TDF_ReqIF_Import" path="TDF_ReqIF_Import\Import">
+		<dependson name="aras.labs.RE_ReqIF_Import"/>
+	</package>
+	<package name="com.aras.innovator.solution.TechDoc" path="TechDoc\Import">
+		<dependson name="aras.labs.TDF_ReqIF_Import"/>
+	</package>
+	<package name="com.aras.innovator.tdf" path=".\">
+		<dependson name="aras.labs.TDF_ReqIF_Import"/>
+	</package>
+</imports>

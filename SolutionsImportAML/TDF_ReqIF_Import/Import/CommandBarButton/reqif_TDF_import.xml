@@ -1,0 +1,10 @@
+﻿<AML>
+ <Item type="CommandBarButton" id="9C6DD4710E8442E4B52E4C0F9E76A1C6" action="add">
+  <image>../images/Download.svg</image>
+  <image_additional>../images/Download.svg</image_additional>
+  <label xml:lang="en">Import ReqIF</label>
+  <on_click_handler keyed_name="reqif_importFile_TDF" type="Method">F8F0D6807D3E42858F4250D08EDAE6F6</on_click_handler>
+  <tooltip_template xml:lang="en">Import ReqIf file (.reqif;.reqifz)</tooltip_template>
+  <name>reqif_TDF_import</name>
+ </Item>
+</AML>

@@ -1,0 +1,99 @@
+﻿<AML>
+ <Item type="RelationshipType" id="E281685D49B44F97BD5B8F54244D674A" action="add" dependencyLevel="0">
+  <auto_search>1</auto_search>
+  <behavior>float</behavior>
+  <copy_permissions>0</copy_permissions>
+  <create_related>0</create_related>
+  <hide_in_all>0</hide_in_all>
+  <inc_rel_key_name>1</inc_rel_key_name>
+  <inc_related_key_name>1</inc_related_key_name>
+  <is_list_type>0</is_list_type>
+  <label xml:lang="en">ReqIF Properties</label>
+  <new_show_related>0</new_show_related>
+  <related_notnull>0</related_notnull>
+  <related_option>2</related_option>
+  <relationship_id keyed_name="tp_bloc_reqif_property" type="ItemType" name="tp_bloc_reqif_property">
+   <Item type="ItemType" id="B56929D81AC3477585AFEFC3E94ECFE6" action="add">
+    <allow_private_permission>1</allow_private_permission>
+    <auto_search>1</auto_search>
+    <default_page_size>50</default_page_size>
+    <enforce_discovery>0</enforce_discovery>
+    <hide_where_used>0</hide_where_used>
+    <implementation_type>table</implementation_type>
+    <instance_data>TP_BLOC_REQIF_PROPERTY</instance_data>
+    <is_dependent>0</is_dependent>
+    <is_relationship>1</is_relationship>
+    <is_versionable>0</is_versionable>
+    <label xml:lang="en">ReqIF Attribute</label>
+    <label_plural xml:lang="en">ReqIF Attributes</label_plural>
+    <large_icon>../images/AddEmailAddress.svg</large_icon>
+    <open_icon>../images/AddEmailAddress.svg</open_icon>
+    <revisions keyed_name="Default" type="Revision">7FE395DD8B9F4E1090756A34B733D75E</revisions>
+    <show_parameters_tab>1</show_parameters_tab>
+    <structure_view>tabs off</structure_view>
+    <unlock_on_logout>0</unlock_on_logout>
+    <use_src_access>1</use_src_access>
+    <name>tp_bloc_reqif_property</name>
+    <Relationships>
+     <Item type="Property" id="44C57824D8F24CE2B78FCD4A8AD1126C" action="add">
+      <column_alignment>left</column_alignment>
+      <column_width>200</column_width>
+      <data_source keyed_name="reqif_ReqMappingProperties">B21106764D4B4C6E9CF6B99C889DFD02</data_source>
+      <data_type>list</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>0</is_hidden>
+      <is_hidden2>0</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">Aras Property</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>20</sort_order>
+      <source_id keyed_name="tp_bloc_reqif_property" type="ItemType" name="tp_bloc_reqif_property">B56929D81AC3477585AFEFC3E94ECFE6</source_id>
+      <stored_length>256</stored_length>
+      <track_history>0</track_history>
+      <name>_aras_property</name>
+     </Item>
+     <Item type="Property" id="E69022C0F00546BF9CC9A621C928E418" action="add">
+      <column_alignment>left</column_alignment>
+      <column_width>200</column_width>
+      <data_type>string</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>0</is_hidden>
+      <is_hidden2>0</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">ReqIF Attribute</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>10</sort_order>
+      <source_id keyed_name="tp_bloc_reqif_property" type="ItemType" name="tp_bloc_reqif_property">B56929D81AC3477585AFEFC3E94ECFE6</source_id>
+      <stored_length>128</stored_length>
+      <track_history>0</track_history>
+      <name>_reqif_attribute</name>
+     </Item>
+     <Item type="View" id="F926484FB34E49819E8232117B21F773" action="add">
+      <client>js</client>
+      <related_id keyed_name="tp_bloc_reqif_property" type="Form">057AE2B4F60C43AF9ADC1212B0637FA7</related_id>
+      <role keyed_name="World" type="Identity">
+       <Item type="Identity" action="get" select="id">
+        <name>World</name>
+       </Item>
+      </role>
+      <show_ssvc>0</show_ssvc>
+      <sort_order>128</sort_order>
+      <source_id keyed_name="tp_bloc_reqif_property" type="ItemType" name="tp_bloc_reqif_property">B56929D81AC3477585AFEFC3E94ECFE6</source_id>
+      <type>default</type>
+     </Item>
+    </Relationships>
+   </Item>
+  </relationship_id>
+  <sort_order>768</sort_order>
+  <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+  <name>tp_bloc_reqif_property</name>
+ </Item>
+</AML>

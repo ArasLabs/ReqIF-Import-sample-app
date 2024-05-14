@@ -1,0 +1,592 @@
+﻿<AML>
+ <Item type="Method" id="4F831A794F954B4BAD758FE9B898DEF4" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[    inn = this.getInnovator();
+    _CCO = CCO;
+    
+    reqIFAttributes = new List<string>();
+    mappedProps = new Dictionary<string, string>() { 
+        {"ReqIF.ChapterName", "req_title"}
+    };
+    /*
+    mappedProps = new Dictionary<string, string>() { 
+        {"ReqIF.ChapterName", "req_title"},
+        {"ReqIF.ForeignID", "external_id"},
+        {"ReqIF.ForeignCreatedBy", "external_owner"},
+        {"ReqIF.Text", "external_content"},
+    };
+    */
+    return reqif_parseFile();
+}
+
+Aras.Server.Core.CallContext _CCO;
+Innovator inn;
+Dictionary<string, string> mappedProps;
+List<string> reqIFAttributes;
+
+public Item reqif_parseFile()
+{
+    string directoryPath = createTempDirectory();
+    string filePath = downloadFile(this.getProperty("fileId"), directoryPath);
+    if (isArchive(filePath))
+    {
+        extractArchive(filePath);
+    }
+
+    string reqIfFilePath = getDocumentPath(directoryPath);
+    ReqIFSharp.ReqIFDeserializer reqIFDeserializer = new ReqIFSharp.ReqIFDeserializer();
+    ReqIFSharp.ReqIF reqif = reqIFDeserializer.Deserialize(reqIfFilePath, false).First();
+    return importReqIF(reqif, directoryPath);
+}
+
+public string createTempDirectory()
+{
+    string directoryPath = _CCO.ServerEnvironment.MapPath("temp/" + inn.getNewID() + "/");
+    if (Directory.Exists(directoryPath))
+    {
+        Directory.Delete(directoryPath);
+    }
+
+    DirectoryInfo directoryInfo = Directory.CreateDirectory(directoryPath);
+    return directoryInfo.FullName;
+}
+
+public string downloadFile(string fileId, string path)
+{
+    //Move file from Vault to temporaty directory
+    if (string.IsNullOrWhiteSpace(fileId))
+    {
+        throw new System.Exception("Error download file from Vault. Wrong id.");
+    }
+
+    Item file = this.newItem("File", "get");
+    file.setID(fileId);
+    file = file.apply();
+    file.checkout(path);
+    string filename = file.getProperty("filename");
+    string fullPath = Path.Combine(path, filename);
+    if (!File.Exists(fullPath))
+    {
+        throw new System.Exception("Error download file from Vault");
+    }
+
+    return fullPath;
+}
+
+public bool isArchive(string path)
+{
+    if (path.EndsWith(".reqifz") || path.EndsWith(".zip"))
+    {
+        return true;
+    }
+    return false;
+}
+
+public void extractArchive(string path)
+{
+    //Exrtact archive to the same directory.
+    using (Ionic.Zip.ZipFile zip = Ionic.Zip.ZipFile.Read(path))
+    {
+        zip.ExtractAll(Path.GetDirectoryName(path));
+    }
+}
+
+public string getDocumentPath(string path)
+{
+    //Return first .reqif xml document
+    var paths = Directory.GetFiles(path, "*.reqif", SearchOption.AllDirectories);
+    if (paths.Length == 0)
+    {
+        throw new System.Exception(" Could not found ReqIF file (*.reqif)");
+    }
+    return paths[0];
+}
+
+public Item importReqIF(ReqIFSharp.ReqIF reqif, string directory)
+{
+    //Throw exception if .reqif document is empty
+    // if (documentIsEmpty(reqif))
+    // {
+    //     throw new System.Exception("ReqIF document is empty.");
+    // }
+
+    string[] attachedFiles = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories);
+    return parseContent(reqif, attachedFiles);
+}
+
+public bool documentIsEmpty(ReqIFSharp.ReqIF reqif)
+{
+    //Check if .reqif document is empty
+    bool result = true;
+    if (reqif.CoreContent == null || reqif.CoreContent.Specifications.Count == 0 || reqif.CoreContent.SpecObjects.Count == 0)
+    {
+        return true;
+    }
+    else
+    {
+        foreach (var spec in reqif.CoreContent.Specifications)
+        {
+            if (spec.Children.Count > 0) return false;
+        }
+    }
+    return result;
+}
+
+public void parseHeader(ReqIFSharp.ReqIF reqif, Item reqDocItem)
+{
+    if (reqif.TheHeader != null)
+    {
+        if (!string.IsNullOrWhiteSpace(reqif.TheHeader.Title))
+        {
+            reqDocItem.setProperty("reqdoc_title", reqif.TheHeader.Title);
+        }
+        else
+        {
+            reqDocItem.setProperty("reqdoc_title", "Requirement Document (ReqIF)");
+        }
+
+        if (!string.IsNullOrWhiteSpace(reqif.TheHeader.Comment))
+        {
+            reqDocItem.setProperty("description", reqif.TheHeader.Comment);
+        }
+    }
+}
+
+public void addReqIFAttributesToReqDoc(Item reqDocItem) {
+    foreach(var attribute in reqIFAttributes) {
+        var reqDocProp = reqDocItem.createRelationship("re_Req_Doc_ReqIF_Property", "add");
+        reqDocProp.setAttribute("doGetItem", "0");
+        reqDocProp.setProperty("_reqif_attribute", attribute);
+    }
+}
+
+public Item parseContent(ReqIFSharp.ReqIF reqif, string[] attachedFiles)
+{
+    var importedReqDocIds = new List<string>();
+    List<SpecObjectEx> specObjectsEx = new List<SpecObjectEx>();
+    if(reqif.CoreContent.Specifications.Count == 0) {
+        Item reqDocItem = this.newItem("re_Requirement_Document", "add");
+        reqDocItem.setAttribute("doGetItem", "0");
+        parseHeader(reqif, reqDocItem);
+        
+        var chapterNum = 1;
+        var specObjects = reqif.CoreContent.SpecObjects;
+        //Parse all specObjectEx (SpecObject) and import it Requirement items
+        foreach (var specObject in specObjects)
+        {
+            var specObjectEx = new SpecObjectEx(reqif, specObject.Identifier);
+            specObjectEx.Chapter = chapterNum.ToString();
+            specObjectsEx.Add(specObjectEx);
+            parseObject(reqif, reqDocItem, specObjectEx, attachedFiles);
+            chapterNum++;
+        }
+        
+        addReqIFAttributesToReqDoc(reqDocItem);
+        
+        var result = reqDocItem.apply();
+        if (result.isError())
+        {
+            return result;
+        } else {
+            importedReqDocIds.Add(result.getID());
+        }
+    } else {
+        //Parse hierarchy of specefications
+        
+        for (int i = 0; i < reqif.CoreContent.Specifications.Count; i++)
+        {
+            var spec = reqif.CoreContent.Specifications[i];
+            Item reqDocItem = this.newItem("re_Requirement_Document", "add");
+            reqDocItem.setAttribute("doGetItem", "0");
+            reqDocItem.setProperty("reqdoc_title", spec.LongName);
+            reqDocItem.setProperty("description", spec.LastChange.ToString("s"));
+            
+            List<SpecObjectEx> reqDocSpecObjectsEx = new List<SpecObjectEx>();
+            for (int j = 0; j < spec.Children.Count; j++)
+            {
+                parseHierarchy(reqif, spec.Children[j], reqDocSpecObjectsEx, (j + 1).ToString(CultureInfo.InvariantCulture));
+            }
+            
+            specObjectsEx.AddRange(reqDocSpecObjectsEx);
+            reqIFAttributes = new List<string>();
+            //Parse all specObjectEx (SpecObject) and import it Requirement items
+            foreach (var specObjectEx in reqDocSpecObjectsEx)
+            {
+                parseObject(reqif, reqDocItem, specObjectEx, attachedFiles);
+            }
+            
+            addReqIFAttributesToReqDoc(reqDocItem);
+            
+            var result = reqDocItem.apply();
+            if (result.isError())
+            {
+                return result;
+            } else {
+                importedReqDocIds.Add(result.getID());
+            }
+        }
+    }
+
+    //Add outgoing links of Requirements
+    foreach (var specRelation in reqif.CoreContent.SpecRelations)
+    {
+        SpecObjectEx source = specObjectsEx.FirstOrDefault(o => o.SpecObject.Identifier == specRelation.Source.Identifier);
+        if (source == null)
+        {
+            continue;
+        }
+        SpecObjectEx target = specObjectsEx.FirstOrDefault(o => o.SpecObject.Identifier == specRelation.Target.Identifier);
+        if (target == null)
+        {
+            continue;
+        }
+
+        Item sourceRequirement = this.newItem("re_Requirement");
+        sourceRequirement.setID(source.Requirement.getID());
+
+        Item targetRequirement = this.newItem("re_Requirement");
+        targetRequirement.setID(target.Requirement.getID());
+
+        Item outlink = sourceRequirement.createRelationship("re_Requirement_Out_Link", "add");
+        outlink.setAttribute("doGetItem", "0");
+        outlink.setProperty("source_id", source.Requirement.getID());
+        outlink.setRelatedItem(targetRequirement);
+        outlink.addRelationship(outlink);
+        outlink = outlink.apply();
+    }
+
+    return this.getInnovator().newResult(String.Join(",", importedReqDocIds.ToArray()));
+}
+
+public void parseHierarchy(ReqIFSharp.ReqIF reqif, ReqIFSharp.SpecHierarchy hierarchy, List<SpecObjectEx> specObjectsEx, string prefix)
+{
+    //Recursive parse hierarchy
+    var specObjectEx = new SpecObjectEx(reqif, hierarchy.Object.Identifier);
+    specObjectEx.Chapter = prefix;
+    specObjectsEx.Add(specObjectEx);
+    for (int i = 0; i < hierarchy.Children.Count; i++)
+    {
+        string childPrefix = prefix + "." + (i + 1).ToString(CultureInfo.InvariantCulture);
+        parseHierarchy(reqif, hierarchy.Children[i], specObjectsEx, childPrefix);
+    }
+}
+
+public class ReqIFProperty
+{
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public string Value { get; set; }
+}
+
+public void parseObject(ReqIFSharp.ReqIF reqif, Item reqDocItem, SpecObjectEx specObjectEx, string[] attachedFiles)
+{
+    if (specObjectEx.SpecObject == null || specObjectEx.SpecObject.Values.Count == 0)
+    {
+        return;
+    }
+    /*
+    string requirementTitle = "";
+    var chapterNameObj = specObjectEx.SpecObject.Values.FirstOrDefault(e => e.AttributeDefinition.LongName == "ReqIF.ChapterName");
+    if(chapterNameObj != null) {
+        requirementTitle = chapterNameObj.ObjectValue.ToString();
+    }
+    */
+    Item reqDocContent = reqDocItem.createRelationship("re_Req_Doc_Content", "add");
+    reqDocContent.setAttribute("doGetItem", "0");
+    reqDocContent.setProperty("chapter", specObjectEx.Chapter);
+    specObjectEx.RequirementContent = reqDocContent;
+
+    Item requirement = reqDocContent.createRelatedItem("re_Requirement", "add");
+    requirement.setAttribute("doGetItem", "0");
+    requirement.setProperty("classification", "Requirement");
+    var requirementTitle = "Chapter " + specObjectEx.Chapter;
+    requirement.setProperty("req_title", requirementTitle);
+    string reqId = requirement.getNewID();
+    requirement.setID(reqId);
+    specObjectEx.Requirement = requirement;
+    
+    string reNamespace = "http://www.aras.com/REStandard";
+    string arasNamespace = "http://aras.com/ArasTechDoc";
+
+    XmlDocument content = new XmlDocument();
+    XmlElement reqElement = content.CreateElement("Requirement");
+    content.AppendChild(reqElement);
+    
+    reqElement.SetAttribute("xmlns", reNamespace);
+    reqElement.SetAttribute("xmlns:aras", arasNamespace);
+    //reqElement.SetAttribute("id", arasNamespace, specObjectEx.SpecObject.Identifier);
+    reqElement.SetAttribute("id", arasNamespace, requirement.getNewID());
+    reqElement.SetAttribute("reqId", requirement.getID());
+    
+    var mainNode = content.CreateElement("Requirement-Info");
+    mainNode.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    // Chapter
+    var chapter = content.CreateElement("Requirement-Chapter");
+    chapter.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeChapter = content.CreateElement("aras", "emph", arasNamespace);
+    nodeChapter.InnerText = requirementTitle;
+    chapter.AppendChild(nodeChapter);
+    mainNode.AppendChild(chapter);
+    
+    // Title
+    var title = content.CreateElement("Requirement-Title");
+    title.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeTitle = content.CreateElement("aras", "emph", arasNamespace);
+    nodeTitle.InnerText = requirementTitle;
+    title.AppendChild(nodeTitle);
+    mainNode.AppendChild(title);
+    
+    // Number
+    var number = content.CreateElement("Requirement-Number");
+    number.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeNumber = content.CreateElement("aras", "emph", arasNamespace);
+    nodeNumber.InnerText = requirementTitle;
+    number.AppendChild(nodeNumber);
+    mainNode.AppendChild(number);
+    
+    content.LastChild.AppendChild(mainNode);
+    
+    var propertiesList = new Dictionary<string, ReqIFProperty>();
+    foreach (var value in specObjectEx.SpecObject.Values)
+    {
+        var reqIFAttributeName = value.AttributeDefinition.LongName;
+        if(!reqIFAttributes.Contains(reqIFAttributeName)) {
+            reqIFAttributes.Add(reqIFAttributeName);
+        }
+        if(mappedProps.ContainsKey(reqIFAttributeName)) {
+            var stringValue = value.ObjectValue.ToString();
+            if(reqIFAttributeName == "ReqIF.Text") {
+               stringValue = stringValue.Replace("reqif-xhtml:", "").Replace("xhtml:", ""); 
+            } else if (reqIFAttributeName == "ReqIF.ChapterName") {
+                stringValue = System.Text.RegularExpressions.Regex.Replace(stringValue, "<.*?>", String.Empty);
+            }
+            requirement.setProperty(mappedProps[reqIFAttributeName], stringValue);
+        }
+        
+        var parsedValue = "";
+        var valueType = "";
+        if (value is ReqIFSharp.AttributeValueString)
+        {
+            parsedValue = parseValue((ReqIFSharp.AttributeValueString) value);
+            valueType = "String";
+        }
+        else if (value is ReqIFSharp.AttributeValueBoolean)
+        {
+            parsedValue = parseValue((ReqIFSharp.AttributeValueBoolean) value);
+            valueType = "Boolean";
+        }
+        else if (value is ReqIFSharp.AttributeValueDate)
+        {
+            parsedValue = parseValue((ReqIFSharp.AttributeValueDate) value);
+            valueType = "Date";
+        }
+        else if (value is ReqIFSharp.AttributeValueEnumeration)
+        {
+            parsedValue = parseValue((ReqIFSharp.AttributeValueEnumeration) value);
+            valueType = "Enumeration";
+        }
+        else if (value is ReqIFSharp.AttributeValueInteger)
+        {
+            parsedValue = parseValue((ReqIFSharp.AttributeValueInteger) value);
+            valueType = "Integer";
+        }
+        else if (value is ReqIFSharp.AttributeValueReal)
+        {
+            parsedValue = parseValue((ReqIFSharp.AttributeValueReal) value);
+            valueType = "Real";
+        }
+        else if (value is ReqIFSharp.AttributeValueXHTML)
+        {
+            parsedValue = parseValue(specObjectEx, content, requirement, (ReqIFSharp.AttributeValueXHTML) value, attachedFiles);
+            valueType = "XHTML";
+        }
+        
+        propertiesList.Add(reqIFAttributeName, new ReqIFProperty {Name = reqIFAttributeName, Type = valueType, Value = parsedValue});
+    }
+
+    var externalPropertiesJSON = Newtonsoft.Json.JsonConvert.SerializeObject(propertiesList, Newtonsoft.Json.Formatting.Indented);
+    requirement.setProperty("external_properties", externalPropertiesJSON);
+    /*
+    if(propertiesList.ContainsKey("Summary")) {
+        nodeTitle.InnerText = propertiesList["Summary"].Value;
+        requirement.setProperty("req_title", propertiesList["Summary"].Value);
+    }
+    */
+    /*
+    if(propertiesList.Count == 1) {
+        nodeTitle.InnerText = propertiesList.Values.First().Name;
+        requirement.setProperty("req_title", propertiesList.Values.First().Name);
+        
+        
+        var text = content.CreateElement("Text");
+        text.SetAttribute("id", arasNamespace, requirement.getNewID());
+        var nodeText = content.CreateElement("aras", "emph", arasNamespace);
+        nodeText.InnerText = propertiesList.Values.First().Value;
+        text.AppendChild(nodeText);
+        content.LastChild.AppendChild(text);
+    }
+    */
+    requirement.setProperty("content", content.OuterXml);
+}
+
+public string parseValue(ReqIFSharp.AttributeValueString value)
+{
+    return value.TheValue;
+}
+
+public string parseValue(ReqIFSharp.AttributeValueBoolean value)
+{
+    return XmlConvert.ToString(value.TheValue);
+}
+
+public string parseValue(ReqIFSharp.AttributeValueDate value)
+{
+    return value.TheValue.ToString("s");
+}
+
+public string parseValue(ReqIFSharp.AttributeValueEnumeration value)
+{
+    List<string> selectedEnums = new List<string>();
+    foreach (var enumValue in value.Values)
+    {
+        selectedEnums.Add(enumValue.LongName);
+    }
+
+    return String.Join(";", selectedEnums.ToArray());
+}
+
+public string parseValue(ReqIFSharp.AttributeValueInteger value)
+{
+    return value.ObjectValue.ToString();
+}
+
+public string parseValue(ReqIFSharp.AttributeValueReal value)
+{
+    return value.ObjectValue.ToString();
+}
+
+public string parseValue(SpecObjectEx specObjectEx, XmlDocument content, Item requirement, ReqIFSharp.AttributeValueXHTML value, string[] files)
+{
+    var xhtmlContent = value.TheValue;
+    xhtmlContent = xhtmlContent.Replace("reqif-xhtml:", "").Replace("xhtml:", "");
+    if(value.AttributeDefinition.LongName == "ReqIF.Text" || value.AttributeDefinition.LongName == "Description") {
+    var mainNode = content.CreateElement("XHTML");
+    mainNode.SetAttribute("aras:id", requirement.getNewID());
+    mainNode.SetAttribute("xmlns", string.Empty);
+    mainNode.SetAttribute("label", specObjectEx.GetValueLongName(value));
+
+    XmlDocument xhtmlDoc = new XmlDocument();
+    xhtmlDoc.LoadXml(xhtmlContent);
+    foreach (XmlNode node in xhtmlDoc.ChildNodes)
+    {
+        uploadAttachedFiles(node, specObjectEx, files);
+    }
+
+    mainNode.InnerText = xhtmlDoc.InnerXml;
+    content.LastChild.AppendChild(mainNode);
+    }
+    return System.Text.RegularExpressions.Regex.Replace(xhtmlContent, "<.*?>", String.Empty);;
+}
+
+public void uploadAttachedFiles(XmlNode node, SpecObjectEx specObjectEx, string[] files)
+{
+    var dataAttribute = node.Attributes != null ? node.Attributes["data"] : null;
+    if (node.LocalName == "object" && dataAttribute != null)
+    {
+        string fileName = Path.GetFileName(Uri.UnescapeDataString(dataAttribute.Value));
+        //Find file with the same name in extracted files adn upload it to Vault
+        string result = files.FirstOrDefault((value) => Path.GetFileName(value) == fileName);
+        if (!string.IsNullOrWhiteSpace(result))
+        {
+            Item file = this.newItem("File", "add");
+            file.setAttribute("doGetItem", "0");
+            file.setProperty("filename", fileName);
+            file.attachPhysicalFile(result);
+            file = file.apply();
+
+            //Replace file path in XHTML by Vault file id
+            if (!file.isError())
+            {
+                if (!isImage(fileName))
+                {
+                    node.Attributes["data"].Value = file.getID();
+                }
+                else
+                {
+                    node.Attributes["data"].Value = file.getID() + "_image";
+                }
+            }
+            else
+            {
+                throw new System.Exception("Error when upload attached file");
+            }
+        }
+    }
+    foreach (XmlNode child in node.ChildNodes)
+    {
+        uploadAttachedFiles(child, specObjectEx, files);
+    }
+}
+
+public bool isImage(string fileName)
+{
+    if (Path.HasExtension(fileName))
+    {
+        string[] extList = new[] { ".png", ".jpg" };
+        string ext = Path.GetExtension(fileName).ToLower();
+        if (extList.Contains(ext))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+public class SpecObjectEx
+{
+    public ReqIFSharp.ReqIF ReqIF
+    {
+        get;
+        private set;
+    }
+
+    public ReqIFSharp.SpecObject SpecObject
+    {
+        get;
+        private set;
+    }
+
+    public string Chapter
+    {
+        get;
+        set;
+    }
+
+    public Item Requirement { get; set; }
+
+    public Item RequirementContent { get; set; }
+
+    public SpecObjectEx(ReqIFSharp.ReqIF reqIF, string identifier)
+    {
+        ReqIF = reqIF;
+        SpecObject = ReqIF.CoreContent.SpecObjects.First(o => o.Identifier == identifier);
+    }
+
+    public ReqIFSharp.SpecType GetSpecType()
+    {
+        return ReqIF.CoreContent.SpecTypes.First(o => o.Identifier == SpecObject.Type.Identifier);
+    }
+
+    public string GetValueLongName(ReqIFSharp.AttributeValue value)
+    {
+        var specType = GetSpecType();
+        return specType.SpecAttributes.First(o => o.Identifier == value.AttributeDefinition.Identifier).LongName;
+    }]]></method_code>
+  <method_type>C#</method_type>
+  <name>reqif_parseFile</name>
+ </Item>
+</AML>

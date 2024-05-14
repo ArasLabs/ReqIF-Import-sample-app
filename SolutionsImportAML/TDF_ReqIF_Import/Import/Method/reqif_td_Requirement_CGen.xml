@@ -1,0 +1,45 @@
+﻿<AML>
+ <Item type="Method" id="CC3101B7C37C46438AE5778DCCCC2966" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[//MethodTemplateName=CSharp:Aras.TDF.ContentGenerator(Strict);
+ItemDocumentElement targetItem = targetElement as ItemDocumentElement;
+Innovator inn = this.Factory.InnovatorInstance;
+
+if (targetItem != null) {
+	targetItem.ClearChilds();
+
+	//Add Requirement Item 
+	DocumentSchemaElement RequirementElement = (DocumentSchemaElement) this.Factory.NewElement("Requirement");
+	
+
+	//System.Diagnostics.Debugger.Break();
+
+	/*ItemDocumentElement RequirementRefElement = (ItemDocumentElement) this.Factory.NewElement("Requirement-Ref");
+	Item itemItem = this.Factory.InnovatorInstance.newItem("re_Requirement", "get");
+	itemItem.setID(targetItem.ItemId);
+	itemItem = itemItem.apply();
+	RequirementRefElement.SetItem(itemItem);
+	targetItem.AddChild(RequirementRefElement);*/
+  
+	
+	
+	Item reqItm = inn.newItem("re_Requirement","re_GetRequirementContent");
+	reqItm.setID(targetItem.ItemId);
+	reqItm = reqItm.apply();
+
+	//Convert XML string into XmlNode
+	XmlDocument doc = new XmlDocument();
+  doc.LoadXml(reqItm.getResult());
+  XmlNode newNode = doc.DocumentElement;
+	
+	//System.Diagnostics.Debugger.Break();
+	DocumentSchemaElement reqItemElement = (DocumentSchemaElement) this.Factory.NewElement(newNode.FirstChild.FirstChild.FirstChild.FirstChild);
+
+	RequirementElement.AddChild(reqItemElement);
+	targetItem.AddChild(RequirementElement);
+	
+}]]></method_code>
+  <method_type>C#</method_type>
+  <name>reqif_td_Requirement_CGen</name>
+ </Item>
+</AML>

@@ -1,0 +1,37 @@
+﻿<AML>
+ <Item type="Method" id="CFDB186F4F1F4C95B72D5D4F1904DBF4" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[aras.vault.SelectFile().then(function(file) {
+    //Generate AML of file
+    var fileNd = aras.newFileItem(file);
+    if (fileNd === null || fileNd === undefined) {
+        return;
+    }
+
+    aras.applyItemWithFilesCheckAsync(fileNd).then(function(resultFile) {
+        //Parse ReqIF file using server method 
+        var parseFileItem = new Item('Method', 'reqif_parseFile');
+        parseFileItem.setProperty('fileId', resultFile.id);
+    
+        var requirementDocumentItem = parseFileItem.apply();
+        if (requirementDocumentItem.isError()) {
+            aras.AlertError(requirementDocumentItem);
+            return;
+        }
+        
+        //Remove original ReqIF file from Vault 
+        var deleteFileAction = new Item("File", "delete");
+        deleteFileAction.setID(resultFile.id);
+        deleteFileAction.apply();
+        
+        //Display Requirement Documents
+        var reqDocs = requirementDocumentItem.getResult().split(',');
+        for(var i=0; i<reqDocs.length; i++) {
+            aras.uiShowItem('re_Requirement_Document', reqDocs[i], i!=1);
+        }
+    });
+});]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>reqif_importFile</name>
+ </Item>
+</AML>

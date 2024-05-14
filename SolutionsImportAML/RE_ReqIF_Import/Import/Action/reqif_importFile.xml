@@ -1,0 +1,15 @@
+﻿<AML>
+ <Item type="Action" id="D912E79C3BDA4DC28536D81B62DADD52" action="add">
+  <item_query>___is_new___</item_query>
+  <label xml:lang="en">Import ReqIF</label>
+  <location>client</location>
+  <method keyed_name="reqif_importFile" type="Method">
+   <Item type="Method" action="get" select="id">
+    <name>reqif_importFile</name>
+   </Item>
+  </method>
+  <target>none</target>
+  <type>itemtype</type>
+  <name>reqif_importFile</name>
+ </Item>
+</AML>

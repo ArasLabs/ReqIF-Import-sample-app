@@ -1,0 +1,111 @@
+﻿<AML>
+ <Item type="ItemType" id="55515617CB224C90AB5A9DAC0F061C2A" action="add">
+  <Relationships>
+   <Item type="Property" id="6F35869C8C124D4E8B7D3AA9A7835FB3" action="add">
+    <column_alignment>left</column_alignment>
+    <data_type>text</data_type>
+    <is_federated>0</is_federated>
+    <is_hidden>1</is_hidden>
+    <is_hidden2>1</is_hidden2>
+    <is_indexed>0</is_indexed>
+    <is_keyed>0</is_keyed>
+    <is_multi_valued>0</is_multi_valued>
+    <is_required>0</is_required>
+    <label xml:lang="en">External Properties</label>
+    <range_inclusive>0</range_inclusive>
+    <readonly>0</readonly>
+    <sort_order>4864</sort_order>
+    <source_id keyed_name="re_Requirement" type="ItemType" name="re_Requirement">55515617CB224C90AB5A9DAC0F061C2A</source_id>
+    <track_history>0</track_history>
+    <name>external_properties</name>
+   </Item>
+   <Item type="Property" id="DE8258C905294CABA9075C67EE199822" action="add">
+    <column_alignment>left</column_alignment>
+    <data_source keyed_name="RE Requirement Complexity">938115B20FCC416B81AB83F85EF81BFE</data_source>
+    <data_type>list</data_type>
+    <default_value xml:lang="en">Low</default_value>
+    <is_federated>0</is_federated>
+    <is_hidden>0</is_hidden>
+    <is_hidden2>0</is_hidden2>
+    <is_indexed>0</is_indexed>
+    <is_keyed>0</is_keyed>
+    <is_multi_valued>0</is_multi_valued>
+    <is_required>0</is_required>
+    <label xml:lang="en">Complexity</label>
+    <range_inclusive>0</range_inclusive>
+    <readonly>0</readonly>
+    <sort_order>4224</sort_order>
+    <source_id keyed_name="re_Requirement" type="ItemType" name="re_Requirement">55515617CB224C90AB5A9DAC0F061C2A</source_id>
+    <stored_length>256</stored_length>
+    <track_history>0</track_history>
+    <name>req_complexity</name>
+   </Item>
+   <Item type="Property" id="2A1431BA304C4834A233BDD0D9E6ACA9" action="add">
+    <column_alignment>left</column_alignment>
+    <data_source keyed_name="RE Requirement Priority">ECF5B38C5B2241F6AED9E2160E2096F5</data_source>
+    <data_type>list</data_type>
+    <default_value xml:lang="en">Low</default_value>
+    <is_federated>0</is_federated>
+    <is_hidden>0</is_hidden>
+    <is_hidden2>0</is_hidden2>
+    <is_indexed>0</is_indexed>
+    <is_keyed>0</is_keyed>
+    <is_multi_valued>0</is_multi_valued>
+    <is_required>0</is_required>
+    <label xml:lang="en">Priority</label>
+    <range_inclusive>0</range_inclusive>
+    <readonly>0</readonly>
+    <sort_order>4352</sort_order>
+    <source_id keyed_name="re_Requirement" type="ItemType" name="re_Requirement">55515617CB224C90AB5A9DAC0F061C2A</source_id>
+    <stored_length>256</stored_length>
+    <track_history>0</track_history>
+    <name>req_priority</name>
+   </Item>
+   <Item type="Property" id="1D674D56B7944C34B01B51216F0C616C" action="add">
+    <column_alignment>left</column_alignment>
+    <data_source keyed_name="RE Requirement Risk">40AFE57E87C646F39192004BF92F26B0</data_source>
+    <data_type>list</data_type>
+    <default_value xml:lang="en">Low</default_value>
+    <is_federated>0</is_federated>
+    <is_hidden>0</is_hidden>
+    <is_hidden2>0</is_hidden2>
+    <is_indexed>0</is_indexed>
+    <is_keyed>0</is_keyed>
+    <is_multi_valued>0</is_multi_valued>
+    <is_required>0</is_required>
+    <label xml:lang="en">Risk</label>
+    <range_inclusive>0</range_inclusive>
+    <readonly>0</readonly>
+    <sort_order>4608</sort_order>
+    <source_id keyed_name="re_Requirement" type="ItemType" name="re_Requirement">55515617CB224C90AB5A9DAC0F061C2A</source_id>
+    <stored_length>256</stored_length>
+    <track_history>0</track_history>
+    <name>req_risk</name>
+   </Item>
+  </Relationships>
+ </Item>
+ <Item type="ItemType" id="55515617CB224C90AB5A9DAC0F061C2A" action="edit">
+  <Relationships>
+   <Item type="Property" action="edit" where="source_id='55515617CB224C90AB5A9DAC0F061C2A' and name='managed_by_id'">
+    <column_alignment>left</column_alignment>
+    <data_source keyed_name="Identity" type="ItemType" name="Identity">E582AB17663F4EF28460015B2BE9E094</data_source>
+    <data_type>item</data_type>
+    <is_federated>0</is_federated>
+    <is_hidden>0</is_hidden>
+    <is_hidden2>0</is_hidden2>
+    <is_indexed>0</is_indexed>
+    <is_keyed>0</is_keyed>
+    <is_multi_valued>0</is_multi_valued>
+    <is_required>0</is_required>
+    <item_behavior>float</item_behavior>
+    <label xml:lang="en">Managed by</label>
+    <range_inclusive>0</range_inclusive>
+    <readonly>0</readonly>
+    <sort_order>320</sort_order>
+    <source_id keyed_name="re_Requirement" type="ItemType" name="re_Requirement">55515617CB224C90AB5A9DAC0F061C2A</source_id>
+    <track_history>0</track_history>
+    <name>managed_by_id</name>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

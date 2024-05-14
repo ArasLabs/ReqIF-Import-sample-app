@@ -1,0 +1,17 @@
+﻿<AML>
+ <Item type="CommandBarSection" id="A26D5527DAFA40B9A7A2F99E3895D537" action="add">
+  <classification>Data Model</classification>
+  <description />
+  <location keyed_name="ItemView.ItemCommandBar" type="cui_Location">830EE31D213649DA934EE655E894EA3A</location>
+  <name>reqif_tdf_custom_buttons</name>
+  <Relationships>
+   <Item type="CommandBarSectionItem" id="E987077FC6E24C8396FB39D3C258B720" action="add">
+    <action>Add</action>
+    <related_id keyed_name="reqif_TDF_import" type="CommandBarItem">9C6DD4710E8442E4B52E4C0F9E76A1C6</related_id>
+    <role keyed_name="Super User" type="Identity">6B14D33C4A7D41C188CCF2BC15BD01A3</role>
+    <sort_order>2000</sort_order>
+    <source_id keyed_name="reqif_tdf_custom_buttons" type="CommandBarSection">A26D5527DAFA40B9A7A2F99E3895D537</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

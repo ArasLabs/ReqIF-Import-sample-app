@@ -1,0 +1,27 @@
+﻿<AML>
+ <Item type="Method" id="3F18C12DB6F44D1C9149F2E95299D15F" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[return {
+	GetAttributes: function() {
+		const attributes = this.inherited(arguments);
+		delete attributes.contentEditable;
+		return attributes;
+	},
+	RenderHtml: function(/* WrappedObject */ schemaElement, /* Object */ parentState) {
+		let out = '';
+		/*
+		if (schemaElement.Display()) {
+		const elementState = this.prepareElementState(schemaElement, parentState);
+
+		out += this.RenderStartHtmlElement(schemaElement, elementState) +
+			(elementState.isBlocked ? this.ResourceString('contentIsBlocked') : this.RenderInnerContent(schemaElement, elementState)) +
+			this.RenderEndHtmlElement(schemaElement, elementState);
+		}
+		*/
+		return out;
+	}
+};]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>reqif_HideElement</name>
+ </Item>
+</AML>

@@ -1,0 +1,31 @@
+﻿<AML>
+ <Item type="Method" id="230F3354B8FD47A3AB776770D1C65681" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[// eslint-disable-next-line
+// @ts-nocheck
+const tgvdId = 'CD19C9ECDE474B43A316D8A9A8BA6CE2';
+const searchParams = new URLSearchParams({ tgvdId });
+const searchParamString = searchParams.toString();
+const content = aras.getBaseURL(
+	`/Modules/aras.innovator.TreeGridView/Views/MainPage.html?${searchParamString}`
+);
+const dialogParameters = {
+	dialogWidth: 800,
+	dialogHeight: 600,
+	title: 'Tree Grid View Sample',
+	content
+};
+
+const topWindow = aras.getMostTopWindowWithAras(window);
+topWindow.ArasModules.MaximazableDialog.show(
+	'iframe',
+	dialogParameters
+).promise.then(function () {
+	delete topWindow.CustomStartConditionProvider;
+	delete topWindow.CustomParametersProvider;
+});
+]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>rb_showTGV_TD_Content</name>
+ </Item>
+</AML>

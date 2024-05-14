@@ -1,0 +1,99 @@
+﻿<AML>
+ <Item type="RelationshipType" id="780C81F9575D4296BB9C66C3F52CF816" action="add" dependencyLevel="0">
+  <auto_search>1</auto_search>
+  <behavior>fixed</behavior>
+  <copy_permissions>0</copy_permissions>
+  <create_related>0</create_related>
+  <hide_in_all>0</hide_in_all>
+  <inc_rel_key_name>1</inc_rel_key_name>
+  <inc_related_key_name>1</inc_related_key_name>
+  <is_list_type>0</is_list_type>
+  <label xml:lang="en">Image References</label>
+  <new_show_related>0</new_show_related>
+  <related_id keyed_name="tp_Image" type="ItemType" name="tp_Image">E4A23B0AC84D4155BF4C1E44B84CBD45</related_id>
+  <related_notnull>0</related_notnull>
+  <related_option>2</related_option>
+  <relationship_id keyed_name="tp_ImageReference" type="ItemType" name="tp_ImageReference">
+   <Item type="ItemType" id="C3A6C9422EB64F5A8B9F82C4AE4FC928" action="add">
+    <allow_private_permission>1</allow_private_permission>
+    <auto_search>0</auto_search>
+    <enforce_discovery>0</enforce_discovery>
+    <hide_where_used>0</hide_where_used>
+    <implementation_type>table</implementation_type>
+    <instance_data>TP_IMAGEREFERENCE</instance_data>
+    <is_dependent>0</is_dependent>
+    <is_relationship>1</is_relationship>
+    <is_versionable>0</is_versionable>
+    <revisions keyed_name="Default" type="Revision">7FE395DD8B9F4E1090756A34B733D75E</revisions>
+    <show_parameters_tab>1</show_parameters_tab>
+    <structure_view>tabs off</structure_view>
+    <unlock_on_logout>0</unlock_on_logout>
+    <use_src_access>1</use_src_access>
+    <name>tp_ImageReference</name>
+    <Relationships>
+     <Item type="Property" id="C2FFB21858284D75937F3CDC352D709F" action="add">
+      <column_alignment>left</column_alignment>
+      <data_type>boolean</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>1</is_hidden>
+      <is_hidden2>1</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">Ignore All Versions</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>7168</sort_order>
+      <source_id keyed_name="tp_ImageReference" type="ItemType" name="tp_ImageReference">C3A6C9422EB64F5A8B9F82C4AE4FC928</source_id>
+      <track_history>0</track_history>
+      <name>ignore_all_versions</name>
+     </Item>
+     <Item type="Property" id="CC5EE073AA7E430095F308B2DCB2794B" action="add">
+      <column_alignment>left</column_alignment>
+      <data_type>string</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>1</is_hidden>
+      <is_hidden2>1</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">Ignored Version Id</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>7296</sort_order>
+      <source_id keyed_name="tp_ImageReference" type="ItemType" name="tp_ImageReference">C3A6C9422EB64F5A8B9F82C4AE4FC928</source_id>
+      <stored_length>32</stored_length>
+      <track_history>0</track_history>
+      <name>ignored_version_id</name>
+     </Item>
+     <Item type="Property" id="D49E816F93464DE19F52E8C2C5184D3F" action="add">
+      <column_alignment>left</column_alignment>
+      <data_type>string</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>0</is_hidden>
+      <is_hidden2>0</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>1</is_required>
+      <label xml:lang="en">reference_id</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>3584</sort_order>
+      <source_id keyed_name="tp_ImageReference" type="ItemType" name="tp_ImageReference">C3A6C9422EB64F5A8B9F82C4AE4FC928</source_id>
+      <stored_length>32</stored_length>
+      <track_history>0</track_history>
+      <name>reference_id</name>
+     </Item>
+    </Relationships>
+   </Item>
+  </relationship_id>
+  <sort_order>256</sort_order>
+  <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+  <name>tp_ImageReference</name>
+ </Item>
+ <Item type="View" action="delete" where="source_id='C3A6C9422EB64F5A8B9F82C4AE4FC928'" />
+ <Item type="Form" action="delete" where="name='tp_ImageReference'" />
+</AML>

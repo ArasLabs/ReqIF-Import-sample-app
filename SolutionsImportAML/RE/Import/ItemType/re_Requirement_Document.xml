@@ -1,0 +1,40 @@
+﻿<AML>
+ <Item type="ItemType" id="231ABCEFD2634AB3AD3B9A4748BFC4FA" action="add">
+  <Relationships>
+   <Item type="Item Action" id="7A2171AAD1494D91874C36379CEADB7C" action="add">
+    <related_id keyed_name="reqif_importFile" type="Action">D912E79C3BDA4DC28536D81B62DADD52</related_id>
+    <sort_order>512</sort_order>
+    <source_id keyed_name="re_Requirement_Document" type="ItemType" name="re_Requirement_Document">231ABCEFD2634AB3AD3B9A4748BFC4FA</source_id>
+   </Item>
+   <Item type="Item Action" id="98B5390A81734A24B0461DB96DF719AC" action="add">
+    <related_id keyed_name="reqif_MapReqIFPropertiesToReqs" type="Action">2058571474634EFF83A1BA055F4B37FB</related_id>
+    <sort_order>640</sort_order>
+    <source_id keyed_name="re_Requirement_Document" type="ItemType" name="re_Requirement_Document">231ABCEFD2634AB3AD3B9A4748BFC4FA</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+ <Item type="ItemType" id="231ABCEFD2634AB3AD3B9A4748BFC4FA" action="edit">
+  <Relationships>
+   <Item type="Property" action="edit" where="source_id='231ABCEFD2634AB3AD3B9A4748BFC4FA' and name='managed_by_id'">
+    <column_alignment>left</column_alignment>
+    <data_source keyed_name="Identity" type="ItemType" name="Identity">E582AB17663F4EF28460015B2BE9E094</data_source>
+    <data_type>item</data_type>
+    <is_federated>0</is_federated>
+    <is_hidden>0</is_hidden>
+    <is_hidden2>0</is_hidden2>
+    <is_indexed>0</is_indexed>
+    <is_keyed>0</is_keyed>
+    <is_multi_valued>0</is_multi_valued>
+    <is_required>0</is_required>
+    <item_behavior>float</item_behavior>
+    <label xml:lang="en">Managed by</label>
+    <range_inclusive>0</range_inclusive>
+    <readonly>0</readonly>
+    <sort_order>1152</sort_order>
+    <source_id keyed_name="re_Requirement_Document" type="ItemType" name="re_Requirement_Document">231ABCEFD2634AB3AD3B9A4748BFC4FA</source_id>
+    <track_history>0</track_history>
+    <name>managed_by_id</name>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

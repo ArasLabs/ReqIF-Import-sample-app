@@ -1,0 +1,15 @@
+﻿<AML>
+ <Item type="Action" id="2058571474634EFF83A1BA055F4B37FB" action="add">
+  <item_query>___is_new___</item_query>
+  <label xml:lang="en">Map ReqIF AttributesTo Reqs</label>
+  <location>server</location>
+  <method keyed_name="reqif_MapReqIFPropertiesToReqs" type="Method">
+   <Item type="Method" action="get" select="id">
+    <name>reqif_MapReqIFPropertiesToReqs</name>
+   </Item>
+  </method>
+  <target>none</target>
+  <type>item</type>
+  <name>reqif_MapReqIFPropertiesToReqs</name>
+ </Item>
+</AML>

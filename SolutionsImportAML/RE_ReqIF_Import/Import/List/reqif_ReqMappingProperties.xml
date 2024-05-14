@@ -1,0 +1,21 @@
+﻿<AML>
+ <Item type="List" id="B21106764D4B4C6E9CF6B99C889DFD02" action="add">
+  <name>reqif_ReqMappingProperties</name>
+  <Relationships>
+   <Item type="Value" id="AEFA5358BB9F412E8460BE6C68EFCE8D" action="add">
+    <inactive>0</inactive>
+    <label xml:lang="en">Content</label>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="reqif_ReqMappingProperties" type="List">B21106764D4B4C6E9CF6B99C889DFD02</source_id>
+    <value>content</value>
+   </Item>
+   <Item type="Value" id="DC95E29448264356B8C98142AF130D52" action="add">
+    <inactive>0</inactive>
+    <label xml:lang="en">Title</label>
+    <sort_order>256</sort_order>
+    <source_id keyed_name="reqif_ReqMappingProperties" type="List">B21106764D4B4C6E9CF6B99C889DFD02</source_id>
+    <value>req_title</value>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>

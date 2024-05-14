@@ -1,0 +1,99 @@
+﻿<AML>
+ <Item type="RelationshipType" id="CB1E6F2C45444222A90C59CF4DD6449A" action="add" dependencyLevel="0">
+  <auto_search>1</auto_search>
+  <behavior>fixed</behavior>
+  <copy_permissions>0</copy_permissions>
+  <create_related>0</create_related>
+  <hide_in_all>0</hide_in_all>
+  <inc_rel_key_name>1</inc_rel_key_name>
+  <inc_related_key_name>1</inc_related_key_name>
+  <is_list_type>0</is_list_type>
+  <label xml:lang="en">Block References</label>
+  <new_show_related>0</new_show_related>
+  <related_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</related_id>
+  <related_notnull>1</related_notnull>
+  <related_option>0</related_option>
+  <relationship_id keyed_name="tp_BlockReference" type="ItemType" name="tp_BlockReference">
+   <Item type="ItemType" id="E5B978ACDB914BA0AE53ED501B6F2600" action="add">
+    <allow_private_permission>1</allow_private_permission>
+    <auto_search>0</auto_search>
+    <enforce_discovery>0</enforce_discovery>
+    <hide_where_used>0</hide_where_used>
+    <implementation_type>table</implementation_type>
+    <instance_data>TP_BLOCKREFERENCE</instance_data>
+    <is_dependent>0</is_dependent>
+    <is_relationship>1</is_relationship>
+    <is_versionable>0</is_versionable>
+    <revisions keyed_name="Default" type="Revision">7FE395DD8B9F4E1090756A34B733D75E</revisions>
+    <show_parameters_tab>1</show_parameters_tab>
+    <structure_view>tabs off</structure_view>
+    <unlock_on_logout>0</unlock_on_logout>
+    <use_src_access>1</use_src_access>
+    <name>tp_BlockReference</name>
+    <Relationships>
+     <Item type="Property" id="4F42326468B54CD7B5A410277CADE7AE" action="add">
+      <column_alignment>left</column_alignment>
+      <data_type>boolean</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>1</is_hidden>
+      <is_hidden2>1</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">Ignore All Versions</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>7168</sort_order>
+      <source_id keyed_name="tp_BlockReference" type="ItemType" name="tp_BlockReference">E5B978ACDB914BA0AE53ED501B6F2600</source_id>
+      <track_history>0</track_history>
+      <name>ignore_all_versions</name>
+     </Item>
+     <Item type="Property" id="AD890640C9B04617948696DBA5B8F73B" action="add">
+      <column_alignment>left</column_alignment>
+      <data_type>string</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>1</is_hidden>
+      <is_hidden2>1</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>0</is_required>
+      <label xml:lang="en">Ignored Version Id</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>7296</sort_order>
+      <source_id keyed_name="tp_BlockReference" type="ItemType" name="tp_BlockReference">E5B978ACDB914BA0AE53ED501B6F2600</source_id>
+      <stored_length>32</stored_length>
+      <track_history>0</track_history>
+      <name>ignored_version_id</name>
+     </Item>
+     <Item type="Property" id="D565DE11D6D4463FA2153715B5036533" action="add">
+      <column_alignment>left</column_alignment>
+      <data_type>string</data_type>
+      <is_federated>0</is_federated>
+      <is_hidden>0</is_hidden>
+      <is_hidden2>0</is_hidden2>
+      <is_indexed>0</is_indexed>
+      <is_keyed>0</is_keyed>
+      <is_multi_valued>0</is_multi_valued>
+      <is_required>1</is_required>
+      <label xml:lang="en">reference_id</label>
+      <range_inclusive>0</range_inclusive>
+      <readonly>0</readonly>
+      <sort_order>3584</sort_order>
+      <source_id keyed_name="tp_BlockReference" type="ItemType" name="tp_BlockReference">E5B978ACDB914BA0AE53ED501B6F2600</source_id>
+      <stored_length>32</stored_length>
+      <track_history>0</track_history>
+      <name>reference_id</name>
+     </Item>
+    </Relationships>
+   </Item>
+  </relationship_id>
+  <sort_order>128</sort_order>
+  <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+  <name>tp_BlockReference</name>
+ </Item>
+ <Item type="View" action="delete" where="source_id='E5B978ACDB914BA0AE53ED501B6F2600'" />
+ <Item type="Form" action="delete" where="name='tp_BlockReference'" />
+</AML>

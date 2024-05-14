@@ -1,0 +1,32 @@
+﻿<AML>
+ <Item type="Method" id="194CA0067A5E4932BF7DE76B3F190F04" action="add">
+  <execution_allowed_to keyed_name="Administrators" type="Identity">2618D6F5A90949BAA7E920D1B04C7EE1</execution_allowed_to>
+  <method_code><![CDATA[return {
+
+	GetTreeName: function(/* WrappedObject */ schemaElement, /* Object */ elementState) {
+		const viewmodel = this.factory._viewmodel;
+		//const reqId = schemaElement.internal.itemNode.id;
+		const reqTitle = schemaElement.internal.itemNode.getElementsByTagName("req_title")[0].innerHTML
+		return reqTitle;
+	},
+	GetTreeStyle: function(schemaElement, elementState) {
+		return {backgroundImage: 'url("../../Solutions/RE/Images/Requirement.svg?req=1")'};
+	},
+	RenderHtml: function(/* WrappedObject */ schemaElement, /* Object */ parentState) {
+		
+		debugger;
+		let out = '';
+		if (schemaElement.Display()) {
+		const elementState = this.prepareElementState(schemaElement, parentState);
+
+		out += this.RenderStartHtmlElement(schemaElement, elementState) +
+			(elementState.isBlocked ? this.ResourceString('contentIsBlocked') : this.RenderInnerContent(schemaElement, elementState)) +
+			this.RenderEndHtmlElement(schemaElement, elementState);
+		}
+		return out;
+	}
+};]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>reqif_TD_requirement_rendered</name>
+ </Item>
+</AML>

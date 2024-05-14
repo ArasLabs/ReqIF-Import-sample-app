@@ -1,0 +1,84 @@
+﻿<AML>
+ <Item type="Method" id="C154FC02CD474416981F125D40E40BA6" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[return {
+    GetTreeName: function( /*WrappedObject*/ schemaElement, /*Object*/ elementState) {
+        return schemaElement.nodeName;
+    },
+    GetTreeStyle: function(schemaElement, elementState) {
+        return {
+            backgroundImage: 'url("../../Solutions/RE/Images/RequirementXHTML.svg")'
+        };
+    },
+    RenderHtml: function( /*WrappedObject*/ schemaElement, /*Object*/ parentState) {
+        var out = '';
+        var elementState = this.prepareElementState(schemaElement, parentState);
+        out += this.RenderStartHtmlElement(schemaElement, elementState);
+        //out += this._getLabel(schemaElement);
+        out += this.RenderInnerContent(schemaElement.origin);
+        out += this.RenderEndHtmlElement(schemaElement, elementState);
+        return out;
+    },
+    GetAttributes: function() {
+        return {
+            contentEditable: 'false'
+        };
+    },
+    RenderInnerContent: function(origin) {
+        var xhtmlElement = document.createElement("div");
+        xhtmlElement.innerHTML = origin.text;
+        if (!xhtmlElement.firstChild) {
+            return origin.text;
+        }
+        xhtmlElement = xhtmlElement.firstChild;
+        this._replaceObjectByLink(xhtmlElement);
+        return xhtmlElement.outerHTML;
+    },
+    getPlaceholder: function() {
+        return 'XHTML...';
+    },
+    _setValue: function(origin, newText) {
+        origin.text = newText;
+    },
+    _getLabel: function(schemaElement) {
+        var label = schemaElement.origin.getAttribute("label");
+        if (label && label.length > 0) {
+            return '<span class="labelRE" label-data="' + label + ':" contenteditable="false"></span>';
+        }
+        return '';
+    },
+    _replaceObjectByLink: function(element) {
+        if (element.nodeName.endsWith('OBJECT')) {
+            var fileId = element.getAttribute('data');
+            if (fileId.endsWith("_image")) {
+                fileId = fileId.replace("_image", "");
+                var image = document.createElement('img');
+                image.setAttribute('src', aras.IomInnovator.getFileUrl(fileId, aras.Enums.UrlType.SecurityToken));
+                image.setAttribute("style", "display: block; max-height:500px; max-width:500px;");
+                element.innerHTML += image.outerHTML;
+                return;
+
+            } else {
+                var fileUrl = "";
+                try {
+                    fileUrl = aras.IomInnovator.getFileUrl(fileId, aras.Enums.UrlType.SecurityToken);
+                } catch(e){
+                    element.innerHTML += "<p>File not found.</p>";
+                    return;
+                }
+                var link = document.createElement('a');
+                link.innerText = ' File ';
+                link.setAttribute('href', fileUrl);
+                link.setAttribute('target', '_blank');
+                element.innerHTML += link.outerHTML;
+            }
+        }
+        for (var i = 0; i < element.children.length; i++) {
+            this._replaceObjectByLink(element.children[i]);
+        }
+    }
+};]]></method_code>
+  <method_type>JavaScript</method_type>
+  <name>reqif_RenderXHTML</name>
+ </Item>
+</AML>

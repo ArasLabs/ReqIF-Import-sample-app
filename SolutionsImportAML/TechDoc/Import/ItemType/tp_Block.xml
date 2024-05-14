@@ -1,0 +1,403 @@
+﻿<AML>
+  <Item type="ItemType" id="ED9F61ADA4334D7D94361F426C081DB5" action="add">
+    <allow_private_permission>1</allow_private_permission>
+    <auto_search>1</auto_search>
+    <class_structure><![CDATA[<class id="ED9F61ADA4334D7D94361F426C081DB5"><class id="B2A15F65A1AF4161AF71176882A3CE53" name="Requirement" /></class>]]></class_structure>
+    <default_page_size>50</default_page_size>
+    <enforce_discovery>1</enforce_discovery>
+    <hide_where_used>0</hide_where_used>
+    <implementation_type>table</implementation_type>
+    <instance_data>TP_BLOCK</instance_data>
+    <is_dependent>0</is_dependent>
+    <is_relationship>0</is_relationship>
+    <is_versionable>1</is_versionable>
+    <label xml:lang="en">Technical Document</label>
+    <label_plural xml:lang="en">Technical Documents</label_plural>
+    <large_icon>../images/TechDocItemType.svg</large_icon>
+    <manual_versioning>1</manual_versioning>
+    <open_icon>../images/TechDocItemType.svg</open_icon>
+    <revisions keyed_name="Default" type="Revision">7FE395DD8B9F4E1090756A34B733D75E</revisions>
+    <show_parameters_tab>0</show_parameters_tab>
+    <structure_view>tabs on</structure_view>
+    <unlock_on_logout>0</unlock_on_logout>
+    <use_src_access>0</use_src_access>
+    <name>tp_Block</name>
+    <Relationships>
+      <Item type="Property" id="1809CAB9EDFD490484E824C0AA870573" action="add">
+        <column_alignment>left</column_alignment>
+        <data_type>text</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">ReqIF Attribute</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>9856</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <track_history>0</track_history>
+        <name>_reqif_attribute</name>
+      </Item>
+      <Item type="Property" id="E60A7ED22E7749D1B632687FA3787FC0" action="add">
+        <column_alignment>left</column_alignment>
+        <data_type>text</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">Condition</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>3328</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <track_history>0</track_history>
+        <name>condition</name>
+      </Item>
+      <Item type="Property" id="3F623C5D0E0E441B85263BEDAF5DEF4D" action="add">
+        <column_alignment>left</column_alignment>
+        <data_type>ml_string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">content</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>4000</stored_length>
+        <track_history>0</track_history>
+        <name>content</name>
+      </Item>
+      <Item type="Property" id="9FABA584BE0041F9AB809284C8A5C3E9" action="add">
+        <column_alignment>left</column_alignment>
+        <data_type>text</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>0</is_hidden>
+        <is_hidden2>0</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">description</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>9728</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <track_history>0</track_history>
+        <name>description</name>
+      </Item>
+      <Item type="Property" id="B25C1D9B6AEE4095B37D615707837A48" action="add">
+        <column_alignment>left</column_alignment>
+        <column_width>250</column_width>
+        <data_type>string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>0</is_hidden>
+        <is_hidden2>0</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>1</is_required>
+        <label xml:lang="en">Name</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>3840</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>128</stored_length>
+        <track_history>0</track_history>
+        <name>name</name>
+      </Item>
+      <Item type="Property" id="7B03E1713E3C40DE85454CDC986E2AF0" action="add">
+        <column_alignment>left</column_alignment>
+        <data_type>string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">Root Element</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>3456</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>64</stored_length>
+        <track_history>0</track_history>
+        <name>root_element_name</name>
+        <Relationships>
+          <Item type="Grid Event" id="AB5F9240E22348A1A4D781048B7CC81D" action="add">
+            <grid_event>onsearchdialog</grid_event>
+            <related_id keyed_name="tp_SearchBlockByElementName" type="Method">
+              <Item type="Method" action="get" select="id">
+                <name>tp_SearchBlockByElementName</name>
+              </Item>
+            </related_id>
+            <sort_order>128</sort_order>
+            <source_id keyed_name="root_element_name" type="Property">7B03E1713E3C40DE85454CDC986E2AF0</source_id>
+          </Item>
+        </Relationships>
+      </Item>
+      <Item type="Property" id="C9ECB0781ECB4CCCA67B94D17FB8A53A" action="add">
+        <column_alignment>left</column_alignment>
+        <data_source keyed_name="tp_BlockRootType">4307CC279453415EA72A7FD0C990FBEC</data_source>
+        <data_type>list</data_type>
+        <default_value xml:lang="en">Empty</default_value>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">root_element_type</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>3584</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>256</stored_length>
+        <track_history>0</track_history>
+        <name>root_element_type</name>
+      </Item>
+      <Item type="Property" id="03F685EB2B89426CA17CE172C91F9E07" action="add">
+        <column_alignment>left</column_alignment>
+        <data_type>string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>0</is_hidden>
+        <is_hidden2>0</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">Title</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>9600</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>512</stored_length>
+        <track_history>0</track_history>
+        <name>techdoc_title</name>
+      </Item>
+      <Item type="Property" id="3A82F248D8B7463DACE680B21BC4A966" action="add">
+        <column_alignment>left</column_alignment>
+        <column_width>200</column_width>
+        <data_source keyed_name="tp_XmlSchema" type="ItemType" name="tp_XmlSchema">DD54C11BF6004B09A9E152AFD61ABEA9</data_source>
+        <data_type>item</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>0</is_hidden>
+        <is_hidden2>0</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>1</is_required>
+        <item_behavior>float</item_behavior>
+        <label xml:lang="en">Schema</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>4096</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <track_history>0</track_history>
+        <name>xml_schema</name>
+      </Item>
+      <Item type="View" id="D3BE372A864A4BAC82BF4F1DE3513E5E" action="add">
+        <client>js</client>
+        <related_id keyed_name="tp_Block" type="Form">4DA6BBBC90674CBABFA453FD164C361F</related_id>
+        <role keyed_name="World" type="Identity">
+          <Item type="Identity" action="get" select="id">
+            <name>World</name>
+          </Item>
+        </role>
+        <show_ssvc>0</show_ssvc>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <type>default</type>
+      </Item>
+      <Item type="Server Event" id="4335D69AF8404179BB29F27A668061CF" action="add">
+        <event_version>version_1</event_version>
+        <is_required>0</is_required>
+        <related_id keyed_name="tp_BlockBeforeAdd" type="Method">
+          <Item type="Method" action="get" select="id">
+            <name>tp_BlockBeforeAdd</name>
+          </Item>
+        </related_id>
+        <server_event>onBeforeAdd</server_event>
+        <sort_order>384</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Server Event" id="D2DD17AF2351467F8989D31BE92C408A" action="add">
+        <event_version>version_1</event_version>
+        <is_required>0</is_required>
+        <related_id keyed_name="tp_BlockBeforeUpd" type="Method">
+          <Item type="Method" action="get" select="id">
+            <name>tp_BlockBeforeUpd</name>
+          </Item>
+        </related_id>
+        <server_event>onBeforeUpdate</server_event>
+        <sort_order>256</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Server Event" id="FB8B36E1D2E44576A7F5C9A4073096C8" action="add">
+        <event_version>version_1</event_version>
+        <is_required>0</is_required>
+        <related_id keyed_name="tp_BlockBeforeUpd" type="Method">
+          <Item type="Method" action="get" select="id">
+            <name>tp_BlockBeforeUpd</name>
+          </Item>
+        </related_id>
+        <server_event>onBeforeVersion</server_event>
+        <sort_order>512</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Item Action" id="24929E90729F4576ADABB2D010D54BEF" action="add">
+        <related_id keyed_name="tp_PublishDocument" type="Action">5BE8FC636F2F4D5797B7261126A819B0</related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="ItemType Life Cycle" id="14F3531928EB4274A67EA3DACE6B9FE2" action="add">
+        <related_id keyed_name="Technical Document" type="Life Cycle Map">876131C0AD974D008023CA860351452D</related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Client Event" id="741613A3689A4B52B67AD8E51159F9B1" action="add">
+        <client_event>OnShowItem</client_event>
+        <related_id keyed_name="tp_OnShowTechDocEditor" type="Method">
+          <Item type="Method" action="get" select="id">
+            <name>tp_OnShowTechDocEditor</name>
+          </Item>
+        </related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Can Add" id="94D1982DCE9F4CCF921A7DEAC5898844" action="add">
+        <can_add>1</can_add>
+        <related_id keyed_name="Technical Document Administrator" type="Identity">719FA509EF8C4944AEEF468604A85E1D</related_id>
+        <sort_order>256</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Can Add" id="EE670BE9261643A5816954043636B0EF" action="add">
+        <can_add>1</can_add>
+        <related_id keyed_name="Technical Document Author" type="Identity">6E4010637C1941748089C622D9C259F2</related_id>
+        <sort_order>384</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+      <Item type="Allowed Permission" id="E20F1E11C3BC4B96B5452A1DC4F235A6" action="add">
+        <is_default>1</is_default>
+        <related_id keyed_name="Technical Document - In Work" type="Permission">1D649D4B762D4F2998CE8424EB52F333</related_id>
+        <sort_order>128</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+      </Item>
+    </Relationships>
+  </Item>
+  <Item type="ItemType" id="ED9F61ADA4334D7D94361F426C081DB5" action="edit">
+    <Relationships>
+      <Item type="Property" id="109B01C4E97D435D87EE65D7D9361C91" action="add">
+        <column_alignment>left</column_alignment>
+        <column_width>130</column_width>
+        <data_source keyed_name="TD_Basic">2EB05A55927445D4A0B69046454AAA6F</data_source>
+        <data_type>sequence</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>0</is_hidden>
+        <is_hidden2>0</is_hidden2>
+        <is_indexed>1</is_indexed>
+        <is_keyed>1</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <keyed_name_order>1</keyed_name_order>
+        <label xml:lang="en">Document Number</label>
+        <order_by>1</order_by>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>3712</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <track_history>0</track_history>
+        <name>item_number</name>
+      </Item>
+      <Item type="Property" action="edit" where="source_id='ED9F61ADA4334D7D94361F426C081DB5' and name='classification'">
+        <column_alignment>left</column_alignment>
+        <column_width>200</column_width>
+        <data_type>string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>0</is_hidden>
+        <is_hidden2>0</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">Type</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>3968</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>512</stored_length>
+        <track_history>0</track_history>
+        <name>classification</name>
+      </Item>
+      <Item type="Property" action="edit" where="source_id='ED9F61ADA4334D7D94361F426C081DB5' and name='major_rev'">
+        <column_alignment>left</column_alignment>
+        <data_type>string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">Revision</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>1792</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>8</stored_length>
+        <track_history>0</track_history>
+        <name>major_rev</name>
+      </Item>
+      <Item type="Property" action="edit" where="source_id='ED9F61ADA4334D7D94361F426C081DB5' and name='state'">
+        <column_alignment>left</column_alignment>
+        <data_type>string</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">State</label>
+        <range_inclusive>0</range_inclusive>
+        <readonly>1</readonly>
+        <sort_order>1408</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <stored_length>32</stored_length>
+        <track_history>0</track_history>
+        <name>state</name>
+      </Item>
+      <Item type="Property" action="edit" where="source_id='ED9F61ADA4334D7D94361F426C081DB5' and name='superseded_date'">
+        <column_alignment>left</column_alignment>
+        <data_type>date</data_type>
+        <is_federated>0</is_federated>
+        <is_hidden>1</is_hidden>
+        <is_hidden2>1</is_hidden2>
+        <is_indexed>0</is_indexed>
+        <is_keyed>0</is_keyed>
+        <is_multi_valued>0</is_multi_valued>
+        <is_required>0</is_required>
+        <label xml:lang="en">Superseded Date</label>
+        <pattern>short_date_time</pattern>
+        <range_inclusive>0</range_inclusive>
+        <readonly>0</readonly>
+        <sort_order>9472</sort_order>
+        <source_id keyed_name="tp_Block" type="ItemType" name="tp_Block">ED9F61ADA4334D7D94361F426C081DB5</source_id>
+        <track_history>0</track_history>
+        <name>superseded_date</name>
+      </Item>
+    </Relationships>
+  </Item>
+</AML>

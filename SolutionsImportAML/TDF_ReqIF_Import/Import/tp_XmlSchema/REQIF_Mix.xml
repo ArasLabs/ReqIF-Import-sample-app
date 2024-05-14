@@ -1,0 +1,522 @@
+﻿<AML>
+ <Item type="tp_XmlSchema" id="22AD279035FF4EA094C53350BC59B4AB" action="add">
+  <application>tp_Block</application>
+  <content>&lt;xs:schema xmlns="http://www.aras.com/TechDocExample" targetNamespace="http://www.aras.com/TechDocExample" xmlns:aras="http://aras.com/ArasTechDoc" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"&gt;
+	&lt;xs:import namespace="http://www.w3.org/XML/1998/namespace"/&gt;
+	&lt;xs:import namespace="http://aras.com/ArasTechDoc"/&gt;
+
+	&lt;xs:element name="Requirement-Ref"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:itemType"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="Requirement-Ref" minOccurs="0" maxOccurs="unbounded"/&gt;
+						&lt;xs:element ref="Requirement" minOccurs="0" maxOccurs="1"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+	
+	&lt;xs:element name="Section"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Title" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:group ref="sectionElements"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:group name="sectionElements"&gt;
+		&lt;xs:choice&gt;
+			&lt;xs:element ref="Text"/&gt;
+			&lt;xs:element ref="List"/&gt;
+			&lt;xs:element ref="Table"/&gt;
+			&lt;xs:element ref="Graphic-Block"/&gt;
+			&lt;xs:element ref="Section"/&gt;
+		&lt;/xs:choice&gt;
+	&lt;/xs:group&gt;
+
+	&lt;xs:element name="Graphic-Block"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Graphic" minOccurs="0" maxOccurs="1"/&gt;
+				&lt;xs:element ref="Label" minOccurs="0" maxOccurs="1"/&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Label"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Graphic"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:imageType"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Title"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Subtitle"&gt;
+		&lt;xs:complexType mixed="true"/&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Text"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="List"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:list"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="List-Item" minOccurs="1" maxOccurs="unbounded"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="List-Item"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:listitemType"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="Text" /&gt;
+						&lt;xs:element ref="Graphic"/&gt;
+						&lt;xs:element ref="List"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Table"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:table"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Row" substitutionGroup="aras:tablerow"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:tr"/&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Entry" substitutionGroup="aras:tablecell"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:td"&gt;
+					&lt;xs:choice minOccurs="0" maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="Text" minOccurs="0" maxOccurs="unbounded"/&gt;
+						&lt;xs:element ref="List"/&gt;
+						&lt;xs:element ref="Graphic"/&gt;
+						&lt;xs:element ref="ItemProperty"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="ItemInfo"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:itemType"&gt;
+					&lt;xs:choice maxOccurs="unbounded"&gt;
+						&lt;xs:element ref="Table" minOccurs="0" maxOccurs="1"/&gt;
+					&lt;/xs:choice&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+	
+	&lt;xs:element name="Requirement-Chapter"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement-Title"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement-Number"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement-Info"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:choice minOccurs="3" maxOccurs="3"&gt;
+					&lt;xs:element ref="Requirement-Chapter" minOccurs="1" maxOccurs="1"/&gt;
+					&lt;xs:element ref="Requirement-Title" minOccurs="1" maxOccurs="1"/&gt;
+					&lt;xs:element ref="Requirement-Number" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Requirement"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;!-- &lt;xs:element ref="Requirement-Info" minOccurs="1" maxOccurs="1"/&gt; --&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+				    &lt;xs:element ref="Requirement-Info"/&gt;
+				    &lt;xs:element ref="Requirement-Chapter"/&gt;
+					&lt;xs:element ref="Requirement-Title"/&gt;
+					&lt;xs:element ref="Requirement-Number"/&gt;
+					&lt;xs:element ref="Label" /&gt;
+					&lt;xs:element ref="Graphic"/&gt;
+					&lt;xs:element ref="Title"/&gt;
+					&lt;xs:element ref="Subtitle"/&gt;
+					&lt;xs:element ref="Text"/&gt;
+					&lt;xs:element ref="List"/&gt;
+					&lt;xs:element ref="List-Item"/&gt;
+					&lt;xs:element ref="Table"/&gt;
+					&lt;xs:element ref="Row"/&gt;
+					&lt;xs:element ref="Entry"/&gt;
+					&lt;xs:element ref="ItemInfo"/&gt;
+					&lt;xs:element ref="XHTML" /&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+	
+	&lt;xs:element name="XHTML"&gt;&lt;/xs:element&gt;
+
+	&lt;xs:element name="TOC"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="TOC-Item" minOccurs="0" maxOccurs="unbounded"/&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="TOC-Item"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:text"&gt;
+					&lt;xs:attribute name="level" type="xs:string"/&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="TOC-Section"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Title" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:element ref="TOC" minOccurs="0" maxOccurs="1"/&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="Chapter"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:sequence&gt;
+				&lt;xs:element ref="Title" minOccurs="1" maxOccurs="1"/&gt;
+				&lt;xs:choice maxOccurs="unbounded"&gt;
+					&lt;xs:group ref="sectionElements"/&gt;
+					&lt;xs:element ref="Chapter"/&gt;
+				&lt;/xs:choice&gt;
+			&lt;/xs:sequence&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+	&lt;xs:element name="ItemProperty"&gt;
+		&lt;xs:complexType&gt;
+			&lt;xs:complexContent&gt;
+				&lt;xs:extension base="aras:itemProperty"&gt;
+					&lt;xs:attribute name="property" type="xs:string" default=""/&gt;
+				&lt;/xs:extension&gt;
+			&lt;/xs:complexContent&gt;
+		&lt;/xs:complexType&gt;
+	&lt;/xs:element&gt;
+
+&lt;/xs:schema&gt;</content>
+  <name>REQIF_Mix</name>
+  <Relationships>
+   <Item type="tp_Stylesheet" id="48A1E3EC25FD46128AC323C5C458FA63" action="add">
+    <sort_order>128</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <style_content>
+#dijitEditorBody {
+	padding: 0px;
+}
+
+hlr {
+	color: #e78e46;
+}
+
+hlr[active] {
+	background-color: #e78e46 !important;
+	color: white;
+}
+
+.ArasBlockXmlSchemaElement &gt; *:last-child {
+	margin-bottom: 20px;
+}
+
+.ArasTextXmlSchemaElement,
+.ArasImageXmlSchemaElement,
+.ArasListXmlSchemaElement,
+.Subtitle {
+	padding: 0 32px;
+}
+
+.ArasTextXmlSchemaElement {
+	font-family: Arial;
+	color: #444444;
+}
+
+.ArasTextXmlSchemaElement + *,
+.Subtitle + * {
+	margin-top: 16px;
+}
+
+.Requirement-Title {
+	padding-left: 0px;
+	padding-right: 20px;
+}
+
+.Requirement-Chapter {
+	padding-left: 20px;
+	padding-right: 0px;
+}
+
+.Requirement-Title, .Requirement-Chapter {
+	padding-top: 20px;
+	padding-bottom: 0px;
+	display: inline-block;
+}
+
+.ArasTextXmlSchemaElement:empty:not(:focus)::before, .XmlSchemaText:empty:not(:focus)::before {
+	content: ''
+}
+
+.Requirement-Title, .Requirement-Chapter {
+	font-weight: bold;
+	font-size: 22px;
+}
+
+.Requirement-Title + *, .Requirement-Chapter + * {
+	margin-top: 4px;
+}
+
+.Requirement-Number {
+	padding: 0 20px;
+	color: #808080;
+	font-size: 12px;
+}
+
+.ArasImageXmlSchemaElement {
+	margin: 0;
+}
+
+.Requirement-Info + *,
+.ArasImageXmlSchemaElement + *,
+.ArasTableXmlSchemaElement + *,
+.ArasListXmlSchemaElement + * {
+	margin-top: 20px;
+}
+
+.Text {
+	font-size: 12px;
+}
+
+.Label {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.Title {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.Subtitle {
+	font-size: 16px;
+}
+
+.ArasTableXmlSchemaElement {
+	border: none;
+	margin-left: 20px;
+	width: calc(100% - 40px);
+	border-collapse: collapse;
+}
+
+.ArasCellXmlSchemaElement &gt; *,
+.ArasListItemXmlSchemaElement &gt; * {
+	padding: 0;
+}
+
+.ArasCellXmlSchemaElement {
+	border: 1px solid #CCC;
+	padding: 8px 6px;
+	background-clip: padding-box;
+}
+
+.ArasListItemXmlSchemaElement.bulletListItem:before {
+	left: 0px;
+}
+
+.ArasListItemXmlSchemaElement,
+.ArasListItemXmlSchemaElement &gt; .ArasListXmlSchemaElement {
+	padding-left: 16px;
+}
+
+.ArasListItemXmlSchemaElement + .ArasListItemXmlSchemaElement,
+.ArasListItemXmlSchemaElement &gt; .ArasListXmlSchemaElement {
+	margin-top: 6px;
+}</style_content>
+    <name>ReqIF Editor Default Style Settings</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="AFF4BAFF40054BDEBD5B3E6A26B850DA" action="add">
+    <content_generator keyed_name="tp_ItemInfoContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>tp_ItemInfoContentGenerator</name>
+     </Item>
+    </content_generator>
+    <is_content_dynamic>0</is_content_dynamic>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name> ItemInfo</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="3D36838E8A1E4B4BB6D15B120222F5D5" action="add">
+    <default_classification />
+    <is_content_dynamic>0</is_content_dynamic>
+    <sort_order>256</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>Requirement</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="E75B567193C24757BEA04839BB52E509" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_ReqTitleElementRenderer" type="Method">CDF4B62D521540779B5A85A5D592F885</renderer>
+    <sort_order>1024</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>Requirement-Title</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="3AFEADE4AFAB4BD194A02AE15AC1CA6B" action="add">
+    <content_generator keyed_name="tp_TOCContentGenerator" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>tp_TOCContentGenerator</name>
+     </Item>
+    </content_generator>
+    <generator_parameters>{
+	/* SourceElements: Identifies the Container Document Elements
+	and Text-based elements to use for each Table of Content Item.
+	The format is as follows:
+
+	Container Element Name: Text Document Element Name
+
+	For example, the following searches for ‘Chapter’ and ‘Section’ Document
+	Elements and will use the content of  the first ‘Title’ Document Element
+	within each for the TOC text.*/
+	"SourceElements": {
+		"Chapter": "Title",
+		"Section": "Title"
+	},
+	/* MaxLevel: The maximum depth to use for the Table of Contents. Valid values are equal to or greater than 1 */
+	"MaxLevel": 3,
+	/* TOCItemName: Name of the Document Element to create for each TOC Item generated */
+	"TOCItemName": "TOC-Item"
+}</generator_parameters>
+    <is_content_dynamic>0</is_content_dynamic>
+    <sort_order>1024</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>TOC</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="31421408BEE94DFBA7A361D7853DF39E" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_HideElement" type="Method">3F18C12DB6F44D1C9149F2E95299D15F</renderer>
+    <sort_order>1152</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>Requirement-Number</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="F660FE9011A14DD2A803C956359E5BFD" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_HideElement" type="Method">3F18C12DB6F44D1C9149F2E95299D15F</renderer>
+    <sort_order>1280</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>Requirement-Chapter</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="9D64C92D25C944CB9491ECA2D02C6192" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="re_ReqTitleElementRenderer" type="Method">CDF4B62D521540779B5A85A5D592F885</renderer>
+    <sort_order>1408</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>Requirement-Info</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="AC1A25C7B36B4774A3098026E65587B0" action="add">
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_RenderXHTML" type="Method">C154FC02CD474416981F125D40E40BA6</renderer>
+    <sort_order>2048</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>XHTML</name>
+   </Item>
+   <Item type="tp_XmlSchemaElement" id="6767A181E3424EFEA03192826E0B3C24" action="add">
+    <content_generator keyed_name="reqif_td_Requirement_CGen" type="Method">
+     <Item type="Method" action="get" select="id">
+      <name>reqif_td_Requirement_CGen</name>
+     </Item>
+    </content_generator>
+    <is_content_dynamic>0</is_content_dynamic>
+    <renderer keyed_name="reqif_TD_requirement_rendered" type="Method">194CA0067A5E4932BF7DE76B3F190F04</renderer>
+    <sort_order>2176</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <name>Requirement-Ref</name>
+   </Item>
+   <Item type="tp_XmlSchemaOutputSetting" id="A7EF84EDF85B4691BDDF65620FCB1B4A" action="add">
+    <classification>Editor</classification>
+    <indentation>0</indentation>
+    <name>Editor</name>
+    <omit_xml_declaration>0</omit_xml_declaration>
+    <sort_order>128</sort_order>
+    <source_id keyed_name="REQIF_Mix" type="tp_XmlSchema">22AD279035FF4EA094C53350BC59B4AB</source_id>
+    <stylesheet_id keyed_name="ReqIF Editor Default Style Settings" type="tp_Stylesheet">48A1E3EC25FD46128AC323C5C458FA63</stylesheet_id>
+   </Item>
+  </Relationships>
+  <target_namespace>http://www.aras.com/TechDocExample</target_namespace>
+ </Item>
+</AML>

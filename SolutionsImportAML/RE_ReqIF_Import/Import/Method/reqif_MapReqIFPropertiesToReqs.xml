@@ -1,0 +1,123 @@
+﻿<AML>
+ <Item type="Method" id="B01662460CF44D66A6DC2259539F4462" action="add">
+  <execution_allowed_to keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</execution_allowed_to>
+  <method_code><![CDATA[    var inn = this.getInnovator();
+    
+    var reqDocId = this.getID();
+    
+    var mappedProperties = inn.newItem("re_Req_Doc_ReqIF_Property", "get");
+    mappedProperties.setAttribute("select", "_reqif_attribute, _aras_property");
+    mappedProperties.setAttribute("where", "_reqif_attribute is not null and _aras_property is not null");
+    mappedProperties.setProperty("source_id", reqDocId);
+    mappedProperties = mappedProperties.apply();
+    
+    var mappedPropertiesDict = new Dictionary<string, string>();
+    var mappedPropertiesCount = mappedProperties.getItemCount();
+    for(var i=0; i<mappedPropertiesCount; i++) {
+        var mappedProperty = mappedProperties.getItemByIndex(i);
+        var reqIFAttribute = mappedProperty.getProperty("_reqif_attribute");
+        var arasProperty = mappedProperty.getProperty("_aras_property");
+        mappedPropertiesDict.Add(reqIFAttribute, arasProperty);
+    }
+    
+    var reqDocReqs = inn.newItem("re_Req_Doc_Content", "get");
+    reqDocReqs.setAttribute("select", "related_id(req_title, config_id, external_properties, classification)");
+    reqDocReqs.setAttribute("where", "external_properties is not null and external_properties <> '{}'");
+    reqDocReqs.setProperty("source_id", reqDocId);
+    reqDocReqs = reqDocReqs.apply();
+    
+    var reqDocReqsCount = reqDocReqs.getItemCount();
+    for(var i=0; i<reqDocReqsCount; i++) {
+        var req = reqDocReqs.getItemByIndex(i).getRelatedItem();
+        var externalProperties = req.getProperty("external_properties", "[]");
+        Dictionary<string, ReqIFProperty> externalPropertiesList = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, ReqIFProperty>>(externalProperties);
+        
+        foreach(var prop in mappedPropertiesDict) {
+            if(externalPropertiesList.ContainsKey(prop.Key)) {
+                var value = externalPropertiesList[prop.Key].Value;
+                if(prop.Value == "content" && value != "") {
+                    var reqTitle = req.getProperty("req_title", "");
+                    XmlDocument content = parseContent(req, reqTitle, value);
+                    req.setProperty("content", content.OuterXml, "en");
+                } else {
+                    req.setProperty(prop.Value, value);
+                }
+            }
+        }
+        req.setAction("edit");
+        req.setAttribute("doGetItem", "0");
+        // req.setAttribute("serverEvents", "0");
+        req.setAttribute("version", "0");
+        req = req.apply();
+    }
+    
+    return this;
+}
+
+public class ReqIFProperty
+{
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public string Value { get; set; }
+}
+
+string reNamespace = "http://www.aras.com/REStandard";
+string arasNamespace = "http://aras.com/ArasTechDoc";
+    
+public XmlDocument parseContent(Item requirement, string requirementTitle, string requirementContent)
+{
+    XmlDocument content = new XmlDocument();
+    
+    XmlElement reqElement = content.CreateElement("Requirement");
+    content.AppendChild(reqElement);
+    reqElement.SetAttribute("xmlns", reNamespace);
+    reqElement.SetAttribute("xmlns:aras", arasNamespace);
+    reqElement.SetAttribute("id", arasNamespace, requirement.getNewID());
+    reqElement.SetAttribute("reqId", requirement.getProperty("config_id"));
+        
+    var mainNode = content.CreateElement("Requirement-Info");
+    mainNode.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    // Chapter
+    var chapter = content.CreateElement("Requirement-Chapter");
+    chapter.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeChapter = content.CreateElement("aras", "emph", arasNamespace);
+    nodeChapter.InnerText = requirementTitle;
+    chapter.AppendChild(nodeChapter);
+    mainNode.AppendChild(chapter);
+    
+    // Title
+    var title = content.CreateElement("Requirement-Title");
+    title.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeTitle = content.CreateElement("aras", "emph", arasNamespace);
+    nodeTitle.InnerText = requirementTitle;
+    title.AppendChild(nodeTitle);
+    mainNode.AppendChild(title);
+    
+    // Number
+    var number = content.CreateElement("Requirement-Number");
+    number.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeNumber = content.CreateElement("aras", "emph", arasNamespace);
+    nodeNumber.InnerText = requirementTitle;
+    number.AppendChild(nodeNumber);
+    mainNode.AppendChild(number);
+    
+    content.LastChild.AppendChild(mainNode);
+    
+    // Text
+    var text = content.CreateElement("Text");
+    text.SetAttribute("id", arasNamespace, requirement.getNewID());
+    
+    var nodeText = content.CreateElement("aras", "emph", arasNamespace);
+    nodeText.InnerText = requirementContent;
+    text.AppendChild(nodeText);
+    content.LastChild.AppendChild(text);
+    
+    return content;]]></method_code>
+  <method_type>C#</method_type>
+  <name>reqif_MapReqIFPropertiesToReqs</name>
+ </Item>
+</AML>

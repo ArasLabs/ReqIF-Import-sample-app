@@ -1,0 +1,16 @@
+﻿<AML>
+ <Item type="CommandBarSection" id="B0A5DD25A13C40C79A5F327B06C30857" action="edit">
+  <classification>Data Model</classification>
+  <location keyed_name="ItemView.ItemCommandBar" type="cui_Location">830EE31D213649DA934EE655E894EA3A</location>
+  <name>itemview.itemcommandbar.requirementsdocument</name>
+  <Relationships>
+   <Item type="CommandBarSectionItem" id="44408F705A0945359230293AB0F21828" action="add">
+    <action>Add</action>
+    <related_id keyed_name="reqif.re.importReqIFFileBtn" type="CommandBarItem">61FE03AF2572470EA061A8B9E8D49BC1</related_id>
+    <role keyed_name="World" type="Identity">A73B655731924CD0B027E4F4D5FCC0A9</role>
+    <sort_order>2000</sort_order>
+    <source_id keyed_name="itemview.itemcommandbar.requirementsdocument" type="CommandBarSection">B0A5DD25A13C40C79A5F327B06C30857</source_id>
+   </Item>
+  </Relationships>
+ </Item>
+</AML>
