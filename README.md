@@ -1,15 +1,14 @@
 # ReqIF Import sample App
 
-This sample app is proposing to user how to import ReqIF document inside ARAS Innovator. The importer is creating Requirements and capture Requirement content in either/or Requirement Engineering (RE) / Technical Documentation Foundation (TDF aka: TD "TechDoc").
+This sample app shows an example of how to import ReqIF documents inside of Aras Innovator. The import creates Requirement Documents within Innovator. There is also an option to import to TechDoc as well.
 
-The prime Import is for RE where Requirement are living but as a demonstrator, a copy/modification of the importer method is allowing to create the same result in TD for the ones looking at using TD. 
+We encourage importing and hosting your Reqiurements to RE, where they can be easily connected to all other parts of the platform. In additon, we've added a quick sample showing how you could utilize a similar process to import to TechDocs as well. This one is hidden from most users and is an example of how to achieve a similar output in TDF.
 
 Importer supports 2 formats:
 - reqif
 - reqifz (zip with other referenced files)
 
-
-It's a sample application proposing a framework to import ReqIF content into ARAS, so feel free to inspire your needs from the main methods where placeholders are present. Main methods are:
+As this is a sample application, feel free to extend the methods as necessary to meet your needs. The main methods and flow are: 
 - RE (Button) -> reqif_importFile (Javascript) -> reqif_parseFile (Server)
 - TD (Button) -> reqif_importFile_TDF (Javascript) -> reqif_parseFile_TDF (Server)
 
