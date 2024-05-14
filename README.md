@@ -1,6 +1,6 @@
 # ReqIF Import sample App
 
-This sample app shows an example of how to import ReqIF documents inside of Aras Innovator. The import creates Requirement Documents within Innovator. There is also an option to import to TechDoc as well.
+This sample app shows an example of how to import ReqIF documents inside of Aras Innovator. The import creates Requirement Documents and child Requirements within Aras Innovator. The package also includes an exmaple for importing to TechDocs as well. 
 
 We encourage importing and hosting your Reqiurements to RE, where they can be easily connected to all other parts of the platform. In additon, we've added a quick sample showing how you could utilize a similar process to import to TechDocs as well. This one is hidden from most users and is an example of how to achieve a similar output in TDF.
 
