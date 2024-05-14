@@ -4,7 +4,7 @@ This sample app shows an example of how to import ReqIF documents inside of Aras
 
 We encourage importing and hosting your Reqiurements to RE, where they can be easily connected to all other parts of the platform. In additon, we've added a quick sample showing how you could utilize a similar process to import to TechDocs as well. This one is hidden from most users and is an example of how to achieve a similar output in TDF.
 
-Importer supports 2 formats:
+The importer supports 2 formats:
 - reqif
 - reqifz (zip with other referenced files)
 
